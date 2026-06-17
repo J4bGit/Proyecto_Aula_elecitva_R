@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jair Barrera">
+
+<title>Efecto del Cadmio en plantas invasoras y nativas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="Análisis_expl_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Análisis_expl_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Análisis_expl_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Análisis_expl_files/libs/quarto-html/popper.min.js"></script>
+<script src="Análisis_expl_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Análisis_expl_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Análisis_expl_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Análisis_expl_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Análisis_expl_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Análisis_expl_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Análisis_expl_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Análisis_expl_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="Análisis_expl_files/libs/dt2-binding-0.1.1/dt2.js"></script>
+
+<link href="Análisis_expl_files/libs/datatables-bs5-css-2.3.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+<script src="Análisis_expl_files/libs/jquery-3.7.0/jquery.min.js"></script>
+
+<script src="Análisis_expl_files/libs/moment-2.29.4/moment.min.js"></script>
+
+<script src="Análisis_expl_files/libs/datatables-core-js-2.3.4/js/dataTables.min.js"></script>
+
+<script src="Análisis_expl_files/libs/datatables-core-js-2.3.4/js/dataTables.bootstrap5.min.js"></script>
+
+<link href="Análisis_expl_files/libs/dt2-fixes-1.0.0/dt2-fixes.css" rel="stylesheet">
+
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología">Metodología</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a></li>
+  </ul>
+<div class="quarto-other-links"><h2>Otros Enlaces</h2><ul><li><a href="https://datadryad.org/dataset/doi:10.5061/dryad.h44j0zpv1#citations"><i class="bi bi-link-45deg"></i>Raw Data</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Efecto del Cadmio en plantas invasoras y nativas</h1>
+<p class="subtitle lead">Análisis Exploratorio</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jair Barrera </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">27 de mayo de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Este ejercicio de investigación compara una especie invasora con una nativa en términos de producción de biomasa y acumulación de metabolitos secundarios al ser expuestas a cadmio. Su importancia biológica radica en que simula el desarrollo vegetal bajo condiciones de contaminación de suelos por metales pesados. Asimismo, permite evaluar si los organismos invasores o generalistas representan un peligro para la biodiversidad si logran presentar ventajas competitivas sobre las especies locales.</p>
+<p>Por lo tanto este ejercicio tiene los siguiente objetivos:</p>
+<ul>
+<li><p><strong>Objetivo general</strong></p>
+<p>Comparar de forma exploratoria las respuestas morfológicas (biomasa) y bioquímicas (producción de taninos) de las especies <em>Alternanthera philoxeroides</em> (invasora) y <em>Alternanthera sessilis</em> (nativa) ante la exposición a suelos contaminados con Cadmio (Cd).</p>
+<ul>
+<li><p><strong>Objetivos específicos</strong></p>
+<ol type="1">
+<li><strong>Analizar la asignación de biomasa:</strong> Describir y comparar la distribución de la masa seca entre la raíz y el tallo (relación raíz/tallo) en ambas especies bajo condiciones de control y tratamiento con cadmio.</li>
+<li><strong>Explorar los costos de tolerancia:</strong> Determinar la relación existente entre la inversión en taninos y el crecimiento global (biomasa seca total) para identificar posibles costos energéticos de defensa en cada especie.</li>
+<li><strong>Evaluar el daño físico frente a la absorción:</strong> Caracterizar el porcentaje de área foliar lesionada en función de la concentración de cadmio acumulado en las hojas.</li>
+</ol></li>
+</ul></li>
+</ul>
+<p>Tales objetivos son los que se espera obtener para dar repuesta la pregunta de investigación <strong>¿Difiere el impacto del Cadmio (Cd) sobre la producción de biomasa y la acumulación de metabolitos secundarios foliares al comparar la especie invasora (<em>Alternanthera philoxeroides</em>) con la especie nativa (<em>Alternanthera sessilis</em>)?</strong></p>
+</section>
+<section id="metodología" class="level2">
+<h2 class="anchored" data-anchor-id="metodología">Metodología</h2>
+<p>Los datos utilizados para este objetivo fueron obtenidos de la plataforma online DRYAD. Corresponden a la investigación hecha por <span class="citation" data-cites="lin2025">(<a href="#ref-lin2025" role="doc-biblioref">Lin et&nbsp;al. 2025</a>)</span>. Los datos presentados en este informe son datos previamente limpiados y que solo presentan las variables con las que trabajará en este ejercicio.</p>
+<hr>
+</section>
+<section id="resultados" class="level2">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-0ee35ea3a70932a31793" style="width:100%;height:auto;" class="dt2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ee35ea3a70932a31793">{"x":{"data":{"ID":["CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL"],"Tratamiento":["control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd"],"Especie":["A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis"],"Hojas_seca_g":[1.075,1.4686,1.317,1.1034,1.1034,1.4148,1.3068,1.296,1.2024,1.2384,1.479,1.0818,1.257,1.2291,1.0926,1.3086,1.1452,1.4807,1.2264,1.14,1.3706,1.276,0.928,1.152,0.972,1.089,1.3574,1.15,1.342,1.09,0.9926,0.6792,0.7992,0.8984,1.0544,0.8456,0.6919,0.9468,0.9275,0.7326,0.9317,0.8496,0.708,0.9156,0.7245,0.3655,0.339,0.549,0.7544999999999999,0.6575,0.7145,0.443,0.491,0.78,0.647,0.6825,0.4125,0.3995,0.5915,0.6274999999999999],"Tallo_seco_g":[1.022,1.6728,1.1382,1.0494,1.0755,1.31328,1.3076,1.3276,1.188,1.2064,1.106,1.08815,1.06365,1.076,1.0734,1.5896,1.0904,1.3032,1.104,1.0184,1.284,1.1074,0.834,1.173,0.978,1.074,1.215,0.911,1.255,1.1466,0.8628,0.6294,0.7887,0.7685999999999999,0.9756,0.7236,0.6366000000000001,0.94175,0.81795,0.681,0.94752,0.7827,0.68845,0.7442,0.73,0.3171,0.33858,0.465,0.6292,0.56055,0.64376,0.3012,0.456,0.64856,0.52663,0.54405,0.3599,0.31728,0.48252,0.56868],"Raiz_seca_g":[0.9928,1.277,1.0105,0.9412,0.94545,1.2115,1.18395,1.14135,1.006,1.1652,0.8528,0.9408,0.9072,1.017,1.0602,1.162,0.918,1.173,0.886,0.965,1.3472,1.3456,0.6860000000000001,1.1088,0.83,0.9204,0.9330000000000001,0.86,1.1732,0.9468,0.9196,0.6528,0.6624,0.886,0.9597,0.8110000000000001,0.7296,0.8456,0.9352,0.6392,0.87795,0.6064000000000001,0.5308,0.8924,0.7635999999999999,0.3488,0.3192,0.455,0.527,0.5698,0.7135,0.4446,0.3476,0.7345,0.544,0.6264999999999999,0.4119,0.3608,0.5028,0.584],"Masa_total_g":[3.0898,4.4184,3.4657,3.094,3.12435,3.93958,3.79835,3.76495,3.3964,3.61,3.4378,3.11075,3.22785,3.3221,3.2262,4.0602,3.1536,3.9569,3.2164,3.1234,4.0018,3.729,2.448,3.4338,2.78,3.0834,3.5054,2.921,3.7702,3.1834,2.775,1.9614,2.2503,2.553,2.9897,2.3802,2.0581,2.73415,2.68065,2.0528,2.75717,2.2387,1.92725,2.5522,2.2181,1.0314,0.99678,1.469,1.9107,1.78785,2.07176,1.1888,1.2946,2.16306,1.71763,1.85305,1.1843,1.07758,1.57682,1.78018],"Cd_hoja_mg.g":[1.379886454,1.383661123,1.361027999,0.320602119,0.131886911,1.975154146,1.681144919,3.435718211,2.768128865,1.157298186,3.600130122,0.416972934,2.207176609,0.827352719,1.167531846,2.148735023,1.061957362,0.190084714,1.313033552,0.951924735,1.531512323,1.148590609,1.651696254,1.73883388,1.700849068,1.045009838,0.140466625,0.635635891,0.633007458,0.269317822,31.41,30.93691782,31.21383652,24.52091665,26.37567398,28.56677152,21.65445623,22.05599851,32.25159809,22.0115247,36.45506716,23.70501161,36.13345616,30.63613558,34.25741848,26.61068029,12.69343652,27.25192613,15.6641015,9.524103553,17.45474761,12.07294937,14.59317597,22.78708508,19.54477251,11.43122051,11.46718478,15.73761211,20.48916829,18.37595319],"Taninos_.mg.g.":[3.806434171,3.554757176,2.823365693,4.712395578,3.593486805,4.077326642,2.646807391,2.319873368,3.487100683,3.96645792,2.813886651,4.131076254,3.719582946,2.205950291,4.328636904,4.549446436,3.617337381,4.407106459,4.298731201,2.45754319,4.882134737,3.817854687,3.20107654,3.815527538,3.132603406,3.131866744,3.348171334,2.676953261,4.39458627,4.941044357,4.416484422,3.719628037,3.547083308,3.546337025,3.245556755,3.943137155,3.760014242,4.156220649,3.398810698,3.417959935,3.824334712,4.944002307,3.750582389,3.988196925,4.042672656,3.433974784,3.428013745,4.440220798,3.651591945,3.984576765,3.272595535,3.265537524,3.187631103,3.644846387,4.664187669,4.536733524,3.989821201,3.791701367,3.872335325,2.777682943],"Lesion_foliar_....":[16.50805982,10.65117405,9.503518264,10.30581382,11.79506082,8.273220793,9.645975766999999,8.055213016,16.5791178,10.71416026,11.75123539,11.41846845,10.37589879,11.05546435,9.603250331,9.026615559,12.72337384,12.17596676,13.89777668,13.67646037,10.43962038,7.197628054,9.643593857000001,13.4357584,12.2080062,13.55201355,13.47623926,8.297574416,10.14854358,13.57088935,2.416304805,2.64577535,3.690296278,3.683995088,3.827825951,2.989819475,1.264017631,3.853707341,2.129093114,4.059423044,1.338053689,2.099117715,4.101963082,4.458698373,6.643680094,5.693327931,5.421976741,7.138668351,8.561892323,7.368755728,5.57381735,6.393238338,5.352363961,4.426635034,5.093552959,5.793897349,4.447342462,6.744013259,6.4865202,6.391458687]},"options":{"searching":false,"autowidth":true,"dt2_theme":{"bs":"bootstrap5","striped":true,"hover":true,"compact":true,"font_scale":0.75,"class":null,"button_class":"btn btn-sm btn-outline-secondary"}}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dimensiones del data frame: 60 Filas, 10 Columnas.</code></pre>
+</div>
+</div>
+<p>Dado los objetivos y las características de las variables con las variables con las que se realizará es ejercicio, se considera pertinente explorar a partir de estas medidas descriptivas:</p>
+<ul>
+<li><strong>La Media (Promedio):</strong> En este caso, es la medida de tendencia central con mayor peso.</li>
+<li><strong>La Desviación Estándar ():</strong> Para ver qué tan dispersos o variables son los datos de las réplicas.</li>
+<li><strong>El Tamaño de la muestra (N</strong>): El número de observaciones por grupo.</li>
+</ul>
+<p>El resultado de estas medidas se disponen en la tabla 2.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-6149094fc075afa1a84a" style="width:100%;height:auto;" class="dt2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6149094fc075afa1a84a">{"x":{"data":{"tratamiento":["Cd","Cd","control","control"],"especie":["A. philoxeroides","A. sessilis","A. philoxeroides","A. sessilis"],"N":[15,15,15,15],"biomasa":[2.409,1.54,3.468,3.358],"biomasa_sd":[0.337,0.391,0.379,0.476],"asignacion":[1.003,1.059,0.888,0.896],"asignacion_sd":[0.14,0.162,0.066,0.121],"taninos_prm":[3.847,3.729,3.479,3.778],"taninos_sd":[0.435,0.535,0.755,0.781],"absorcion":[28.812,17.047,1.588,1.077],"absorcion_sd":[5.123,5.485,1.055,0.615],"daño":[3.28,6.059,11.082,11.565],"daño_sd":[1.382,1.12,2.478,2.241]},"options":{"searching":false,"autowidth":true,"dt2_theme":{"bs":"bootstrap5","striped":true,"hover":true,"compact":true,"font_scale":0.75,"class":null,"button_class":"btn btn-sm btn-outline-secondary"}}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Análisis_expl_files/figure-html/Figura%201.%20Distribución%20general%20de%20biomasa-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Análisis_expl_files/figure-html/figura%202-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Análisis_expl_files/figure-html/Figura%203-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-lin2025" class="csl-entry" role="listitem">
+Lin, Tiantian, Abdul Manan, Shuya Yang, et&nbsp;al. 2025. <span>«Heavy Metal Pollution Enhances Pathogen Resistance of an Invasive Plant Species over Its Native Congener»</span>. <em>Functional Ecology</em> 39 (4): 1096-111. <a href="https://doi.org/10.1111/1365-2435.70011">https://doi.org/10.1111/1365-2435.70011</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
