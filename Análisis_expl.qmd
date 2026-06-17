@@ -1,0 +1,193 @@
+---
+title: "Efecto del Cadmio en plantas invasoras y nativas"
+subtitle: "Análisis Exploratorio"
+author: "Jair Barrera"
+date: "2026-06-17"
+lang: es
+format:
+  html:
+    theme: Brite
+    toc: true
+    toc-depth: 3
+    toc-title: "Contenido"
+    code-fold: true
+    code-summary: "Mostrar código"
+    other-links: 
+       - text: Raw Data
+         href:  https://datadryad.org/dataset/doi:10.5061/dryad.h44j0zpv1#citations 
+bibliography: references.bib
+echo: false
+message: false
+warning: false
+---
+
+## Introducción
+
+Este ejercicio de investigación compara una especie invasora con una nativa en términos de producción de biomasa y acumulación de metabolitos secundarios al ser expuestas a cadmio. Su importancia biológica radica en que simula el desarrollo vegetal bajo condiciones de contaminación de suelos por metales pesados. Asimismo, permite evaluar si los organismos invasores o generalistas representan un peligro para la biodiversidad si logran presentar ventajas competitivas sobre las especies locales.
+
+Por lo tanto este ejercicio tiene los siguiente objetivos:
+
+- **Objetivo general**
+
+  Comparar de forma exploratoria las respuestas morfológicas (biomasa) y bioquímicas (producción de taninos) de las especies *Alternanthera philoxeroides* (invasora) y *Alternanthera sessilis* (nativa) ante la exposición a suelos contaminados con Cadmio (Cd).
+
+  - **Objetivos específicos**
+
+    1.  **Analizar la asignación de biomasa:** Describir y comparar la distribución de la masa seca entre la raíz y el tallo (relación raíz/tallo) en ambas especies bajo condiciones de control y tratamiento con cadmio.
+    2.  **Explorar los costos de tolerancia:** Determinar la relación existente entre la inversión en taninos y el crecimiento global (biomasa seca total) para identificar posibles costos energéticos de defensa en cada especie.
+    3.  **Evaluar el daño físico frente a la absorción:** Caracterizar el porcentaje de área foliar lesionada en función de la concentración de cadmio acumulado en las hojas.
+
+Tales objetivos son los que se espera obtener para dar repuesta la pregunta de investigación **¿Difiere el impacto del Cadmio (Cd) sobre la producción de biomasa y la acumulación de metabolitos secundarios foliares al comparar la especie invasora (*Alternanthera philoxeroides*) con la especie nativa (*Alternanthera sessilis*)?**
+
+## Metodología
+
+Los datos utilizados para este objetivo fueron obtenidos de la plataforma online DRYAD. Corresponden a la investigación hecha por [@lin2025]. Los datos presentados en este informe son datos previamente limpiados y que solo presentan las variables con las que trabajará en este ejercicio.
+
+------------------------------------------------------------------------
+
+## Resultados
+
+```{r}
+#| label: cargue de paquetes
+
+library(tidyverse)
+library(DT2)
+library(ggpubr)
+```
+
+```{r}
+#| label: Data frame
+Datos <- read.csv("Datos/datos_limpios.csv")
+
+dt2(Datos,
+    theme = "compact",
+    options = list(searching = FALSE, 
+                   autowidth = TRUE
+                   ),
+    responsive = FALSE,
+    
+    )
+
+cat("Dimensiones del data frame:",nrow(Datos) , "Filas,", ncol(Datos),"Columnas.")
+
+```
+
+Dado los objetivos y las características de las variables con las variables con las que se realizará es ejercicio, se considera pertinente explorar a partir de estas medidas descriptivas:
+
+- **La Media (Promedio):** En este caso, es la medida de tendencia central con mayor peso.
+- **La Desviación Estándar ():** Para ver qué tan dispersos o variables son los datos de las réplicas.
+- **El Tamaño de la muestra (N**): El número de observaciones por grupo.
+
+El resultado de estas medidas se disponen en la tabla 2.
+
+```{r}
+#| label: EDA
+
+# 1. se crea una nueva columna en el dataframe principal. Corresponde a la 
+#    relación raíz/tallo.
+datos_eda <- Datos |> 
+  mutate(relacion_R_T = Raiz_seca_g / Tallo_seco_g)
+
+colnames(datos_eda) <- c(
+  "ID", "tratamiento", "especie", "hoja_seca_g", 
+  "tallo_seco_g", "raiz_seca_g", "masa_total_g", 
+  "Cd_hoja_mg/g", "taninos_(mg/g)", "lesión_foliar_(%)", "relacion_r/t"
+) 
+
+```
+
+```{r}
+#| label: tabla resumen
+
+# creación de la tabla con el resumen estadístico.
+
+resumen_estadistico <- datos_eda |> 
+  group_by(tratamiento,especie) |> 
+  summarise(
+    N          = n(),
+    biomasa    = round(mean(masa_total_g),3),
+    biomasa_sd = round(sd(masa_total_g),3),
+    asignacion = round (mean(`relacion_r/t`),3),
+    asignacion_sd = round(sd(`relacion_r/t`),3),
+    taninos_prm = round(mean(`taninos_(mg/g)`),3),
+    taninos_sd    = round(sd(`taninos_(mg/g)`),3),
+    absorcion  = round(mean(`Cd_hoja_mg/g`),3),
+    absorcion_sd = round(sd(`Cd_hoja_mg/g`),3),
+    daño       = round(mean(`lesión_foliar_(%)`),3),
+    daño_sd    = round(sd(`lesión_foliar_(%)`),3)
+  ) 
+
+dt2(resumen_estadistico, 
+    theme = "compact",
+    options = list(searching = FALSE, 
+                   autowidth = TRUE),
+    responsive = FALSE,
+)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+#| label: Figura 1. Distribución general de biomasa
+
+# primero calcularé la media por los grupos. me servirá para la figura.
+
+x1 <- datos_eda |>  
+  group_by(tratamiento, especie) |>  
+  summarise(grp_mean = round(mean(masa_total_g),2), .groups = "drop")
+
+ggplot(datos_eda, aes(masa_total_g,color = tratamiento)) +
+  geom_histogram(fill= "white",alpha= 0.5, position = "identity") +
+  facet_wrap(~especie, ncol = 1,) +
+  geom_vline(data = x1, 
+             aes(xintercept = grp_mean, color = tratamiento, linetype = "Media de masa"), 
+             linewidth = 0.80, show.legend = TRUE) +
+  geom_text(data = x1, aes(x = grp_mean, y = Inf, label = grp_mean, color = tratamiento), 
+            vjust = 1.5, hjust = -0.2, show.legend = F) +
+  labs(y = "Número de plantas", x = "Masa total (g)") +
+  scale_linetype_manual(name = NULL, values = c("Media de masa" = 4)) +
+  theme_minimal()
+    
+  
+```
+
+```{r}
+#| label: figura 2
+
+ggplot(datos_eda, aes(masa_total_g,`taninos_(mg/g)`,
+                      )) +
+         geom_point(size = 2) +
+  geom_smooth(method = "lm", se = FALSE, size = 1) +
+  facet_grid(tratamiento~especie, scales = "free_y") +
+  stat_cor(
+    method = "pearson", 
+    aes(label = ..r.label..), # <-- Esto extrae solo el coeficiente R
+    label.x.npc = "left", 
+    label.y.npc = "top"
+  ) + 
+  theme_minimal() +
+  labs(
+    title = "Relación entre Biomasa y Concentración de Taninos foliares",
+    x = "Biomasa Seca Total (g)",
+    y = "Taninos en hojas (mg/g)"
+  )
+       
+
+
+```
+
+```{r}
+#| label: Figura 3
+
+ggplot(datos_eda, aes(especie,`lesión_foliar_(%)`,
+                      fill = tratamiento)) +
+         geom_boxplot() + 
+  facet_wrap(~tratamiento) +
+      geom_jitter(color="black", size=0.4, alpha=0.9) +
+    theme_minimal() +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=9)
+    ) +
+    ggtitle("A boxplot with jitter")
+```
