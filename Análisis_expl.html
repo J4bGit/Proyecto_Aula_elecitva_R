@@ -56,23 +56,7 @@ div.csl-indent {
 <link href="Análisis_expl_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Análisis_expl_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Análisis_expl_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Análisis_expl_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="Análisis_expl_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-<script src="Análisis_expl_files/libs/dt2-binding-0.1.1/dt2.js"></script>
-
-<link href="Análisis_expl_files/libs/datatables-bs5-css-2.3.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
-<script src="Análisis_expl_files/libs/jquery-3.7.0/jquery.min.js"></script>
-
-<script src="Análisis_expl_files/libs/moment-2.29.4/moment.min.js"></script>
-
-<script src="Análisis_expl_files/libs/datatables-core-js-2.3.4/js/dataTables.min.js"></script>
-
-<script src="Análisis_expl_files/libs/datatables-core-js-2.3.4/js/dataTables.bootstrap5.min.js"></script>
-
-<link href="Análisis_expl_files/libs/dt2-fixes-1.0.0/dt2-fixes.css" rel="stylesheet">
-
+<link href="Análisis_expl_files/libs/bootstrap/bootstrap-ebda192607b4aaa0c2c12f42de2f2d18.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -88,8 +72,9 @@ div.csl-indent {
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
   <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología">Metodología</a></li>
   <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados">Resultados</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">Conclusiones</a></li>
   </ul>
-<div class="quarto-other-links"><h2>Otros Enlaces</h2><ul><li><a href="https://datadryad.org/dataset/doi:10.5061/dryad.h44j0zpv1#citations"><i class="bi bi-link-45deg"></i>Raw Data</a></li></ul></div></nav>
+<div class="quarto-other-links"><h2>Otros Enlaces</h2><ul><li><a href="https://datadryad.org/dataset/doi:10.5061/dryad.h44j0zpv1#citations"><i class="bi bi-link-45deg"></i>Datos</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -113,7 +98,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">27 de mayo de 2026</p>
+      <p class="date">14 de junio de 2026</p>
     </div>
   </div>
   
@@ -127,85 +112,719 @@ div.csl-indent {
 
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
-<p>Este ejercicio de investigación compara una especie invasora con una nativa en términos de producción de biomasa y acumulación de metabolitos secundarios al ser expuestas a cadmio. Su importancia biológica radica en que simula el desarrollo vegetal bajo condiciones de contaminación de suelos por metales pesados. Asimismo, permite evaluar si los organismos invasores o generalistas representan un peligro para la biodiversidad si logran presentar ventajas competitivas sobre las especies locales.</p>
-<p>Por lo tanto este ejercicio tiene los siguiente objetivos:</p>
-<ul>
-<li><p><strong>Objetivo general</strong></p>
-<p>Comparar de forma exploratoria las respuestas morfológicas (biomasa) y bioquímicas (producción de taninos) de las especies <em>Alternanthera philoxeroides</em> (invasora) y <em>Alternanthera sessilis</em> (nativa) ante la exposición a suelos contaminados con Cadmio (Cd).</p>
-<ul>
-<li><p><strong>Objetivos específicos</strong></p>
-<ol type="1">
-<li><strong>Analizar la asignación de biomasa:</strong> Describir y comparar la distribución de la masa seca entre la raíz y el tallo (relación raíz/tallo) en ambas especies bajo condiciones de control y tratamiento con cadmio.</li>
-<li><strong>Explorar los costos de tolerancia:</strong> Determinar la relación existente entre la inversión en taninos y el crecimiento global (biomasa seca total) para identificar posibles costos energéticos de defensa en cada especie.</li>
-<li><strong>Evaluar el daño físico frente a la absorción:</strong> Caracterizar el porcentaje de área foliar lesionada en función de la concentración de cadmio acumulado en las hojas.</li>
-</ol></li>
-</ul></li>
-</ul>
-<p>Tales objetivos son los que se espera obtener para dar repuesta la pregunta de investigación <strong>¿Difiere el impacto del Cadmio (Cd) sobre la producción de biomasa y la acumulación de metabolitos secundarios foliares al comparar la especie invasora (<em>Alternanthera philoxeroides</em>) con la especie nativa (<em>Alternanthera sessilis</em>)?</strong></p>
+<p>La contaminación por metales es un grave problema ambiental provocado por la liberación de iones metales pesados al medio ambiente natural. Las actividades humanas como la minería, la agricultura y los procesos industriales han contribuido significativa mente al aumento de la contaminación por metales en el suelo, el agua y el aire <span class="citation" data-cites="dagdag2023 s2016">(<a href="#ref-dagdag2023" role="doc-biblioref">Dagdag et&nbsp;al. 2023</a>; <a href="#ref-s2016" role="doc-biblioref">S 2016</a>)</span>. Por tal motivo es de mucha irelevancia su estudio en cualquier área ambiental <span class="citation" data-cites="xie2022">(<a href="#ref-xie2022" role="doc-biblioref">Xie 2022</a>)</span>. Para la ecología vegetal y la industria de la agricultura la contaminación de suelos por parte de los metales pesados es importante porque plantea graves peligros para el funcionamiento y crecimiento adecuado de las plantas <span class="citation" data-cites="AthukoralaArachchige2026">(<a href="#ref-AthukoralaArachchige2026" role="doc-biblioref">Athukorala Arachchige 2026</a>)</span>. Un problema ecológico curioso, es que ante esta contaminación muchas especies de plantas invasoras han demostrado una mayor capacidad para tolerar y acumular metales pesados que sus plantas nativas coexistentes <span class="citation" data-cites="lin2025">(<a href="#ref-lin2025" role="doc-biblioref">Lin et&nbsp;al. 2025</a>)</span>.</p>
+<p>Para analizar este problema ecológico, este ejercicio de investigación compara una especie invasora con una nativa en términos de producción de biomasa y acumulación de metabolitos secundarios al ser expuestas a cadmio. Por lo tanto, se plantea la siguiente pregunta: <strong>¿Difiere el impacto del Cadmio (Cd) sobre la producción de biomasa y la acumulación de metabolitos secundarios foliares al comparar la especie invasora (<em>Alternanthera philoxeroides</em>) con la especie nativa (<em>Alternanthera sessilis</em>)?</strong>.</p>
 </section>
 <section id="metodología" class="level2">
 <h2 class="anchored" data-anchor-id="metodología">Metodología</h2>
-<p>Los datos utilizados para este objetivo fueron obtenidos de la plataforma online DRYAD. Corresponden a la investigación hecha por <span class="citation" data-cites="lin2025">(<a href="#ref-lin2025" role="doc-biblioref">Lin et&nbsp;al. 2025</a>)</span>. Los datos presentados en este informe son datos previamente limpiados y que solo presentan las variables con las que trabajará en este ejercicio.</p>
+<p>Se descargaron datos que corresponden a la investigación hecha por <span class="citation" data-cites="lin2025">(<a href="#ref-lin2025" role="doc-biblioref">Lin et&nbsp;al. 2025</a>)</span> A través de la plataforma online DRYAD. Los datos fueron limpiados y transformados a formato csv para su análisis bajo el lenguaje de programación <span class="citation" data-cites="base">(<a href="#ref-base" role="doc-biblioref">R Core Team 2026</a>)</span> usando el la interfaz de <span class="citation" data-cites="RStudio">(<a href="#ref-RStudio" role="doc-biblioref">Posit Team 2026</a>)</span>. El resultado fue un data frame con 60 filas y 11 columnas. Para el procesamiento de datos se usó el paquete ‘tidyverse’ <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et&nbsp;al. 2019</a>)</span>, la representación de gráficas se ejecutaron a través de los paquetes ‘ggplot2’ y ‘ggpubr’ <span class="citation" data-cites="ggplot2 ggpubr">(<a href="#ref-ggplot2" role="doc-biblioref">Wickham 2016</a>; <a href="#ref-ggpubr" role="doc-biblioref">Kassambara 2026</a>)</span> y las tablas se presentan usando el paquete ‘gt’ <span class="citation" data-cites="gt">(<a href="#ref-gt" role="doc-biblioref">Iannone et&nbsp;al. 2026</a>)</span>.</p>
 <hr>
 </section>
 <section id="resultados" class="level2">
 <h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p>Dados los objetivos del estudio y la naturaleza de las variables, se seleccionaron el promedio y la desviación estándar como estadísticas descriptivas para evaluar la tendencia central y la variabilidad de las réplicas, cuyos resultados se presentan en la <a href="#tbl-tabla1" class="quarto-xref">Tabla&nbsp;1</a>. Asimismo, con el fin de explorar los datos y obtener un panorama preliminar, se generó un histograma de la distribución de la biomasa por tratamiento (<a href="#fig-1" class="quarto-xref">Figura&nbsp;1</a>), se evaluó la relación entre la biomasa y la concentración de taninos foliares (<a href="#fig-2" class="quarto-xref">Figura&nbsp;2</a>), y se analizaron las diferencias en el daño foliar (<a href="#fig-3" class="quarto-xref">Figura&nbsp;3</a>).</p>
+<div class="cell">
+<div id="tbl-tabla1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tabla1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;1: <strong>Resumen estadístico de variables</strong>
+</figcaption>
+<div aria-describedby="tbl-tabla1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="qqgtmbzakh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qqgtmbzakh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qqgtmbzakh thead, #qqgtmbzakh tbody, #qqgtmbzakh tfoot, #qqgtmbzakh tr, #qqgtmbzakh td, #qqgtmbzakh th {
+  border-style: none;
+}
+
+#qqgtmbzakh p {
+  margin: 0;
+  padding: 0;
+}
+
+#qqgtmbzakh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qqgtmbzakh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qqgtmbzakh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qqgtmbzakh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qqgtmbzakh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qqgtmbzakh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qqgtmbzakh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qqgtmbzakh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qqgtmbzakh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qqgtmbzakh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qqgtmbzakh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qqgtmbzakh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qqgtmbzakh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qqgtmbzakh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qqgtmbzakh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qqgtmbzakh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qqgtmbzakh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qqgtmbzakh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qqgtmbzakh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qqgtmbzakh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qqgtmbzakh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qqgtmbzakh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qqgtmbzakh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qqgtmbzakh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qqgtmbzakh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qqgtmbzakh .gt_left {
+  text-align: left;
+}
+
+#qqgtmbzakh .gt_center {
+  text-align: center;
+}
+
+#qqgtmbzakh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qqgtmbzakh .gt_font_normal {
+  font-weight: normal;
+}
+
+#qqgtmbzakh .gt_font_bold {
+  font-weight: bold;
+}
+
+#qqgtmbzakh .gt_font_italic {
+  font-style: italic;
+}
+
+#qqgtmbzakh .gt_super {
+  font-size: 65%;
+}
+
+#qqgtmbzakh .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qqgtmbzakh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qqgtmbzakh .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qqgtmbzakh .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qqgtmbzakh .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qqgtmbzakh .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qqgtmbzakh .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qqgtmbzakh .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qqgtmbzakh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="tratamiento" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">tratamiento</th>
+<th id="Variable" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Variable</th>
+<th id="promedio" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Promedio</th>
+<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Desviación Estándar</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="gt_row_group_first odd">
+<td rowspan="10" class="gt_row gt_left gt_stub_row_group" headers="A. philoxeroides stub_2_1 stub_1">A. philoxeroides</td>
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_1 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_1 Variable">Masa total (g)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_1 promedio">2.409</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_1 sd">0.337</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_2 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_2 Variable">Relación Raíz/Tallo</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_2 promedio">1.003</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_2 sd">0.140</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_3 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_3 Variable">Taninos (mg/g)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_3 promedio">3.847</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_3 sd">0.435</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_4 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_4 Variable">Cd foliar (mg/g)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_4 promedio">28.812</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_4 sd">5.123</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_5 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_5 Variable">Lesión foliar (%)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_5 promedio">3.280</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_5 sd">1.382</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_6 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_6 Variable">Masa total (g)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_6 promedio">3.468</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_6 sd">0.379</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_7 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_7 Variable">Relación Raíz/Tallo</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_7 promedio">0.888</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_7 sd">0.066</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_8 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_8 Variable">Taninos (mg/g)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_8 promedio">3.479</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_8 sd">0.755</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_9 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_9 Variable">Cd foliar (mg/g)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_9 promedio">1.588</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_9 sd">1.055</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. philoxeroides stub_2_10 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_10 Variable">Lesión foliar (%)</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_10 promedio">11.082</td>
+<td class="gt_row gt_center" headers="A. philoxeroides stub_2_10 sd">2.478</td>
+</tr>
+<tr class="gt_row_group_first odd">
+<td rowspan="10" class="gt_row gt_left gt_stub_row_group" headers="A. sessilis stub_2_11 stub_1">A. sessilis</td>
+<td class="gt_row gt_left" headers="A. sessilis stub_2_11 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_11 Variable">Masa total (g)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_11 promedio">1.540</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_11 sd">0.391</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_12 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_12 Variable">Relación Raíz/Tallo</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_12 promedio">1.059</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_12 sd">0.162</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_13 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_13 Variable">Taninos (mg/g)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_13 promedio">3.729</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_13 sd">0.535</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_14 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_14 Variable">Cd foliar (mg/g)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_14 promedio">17.047</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_14 sd">5.485</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_15 tratamiento">Cd</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_15 Variable">Lesión foliar (%)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_15 promedio">6.059</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_15 sd">1.120</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_16 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_16 Variable">Masa total (g)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_16 promedio">3.358</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_16 sd">0.476</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_17 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_17 Variable">Relación Raíz/Tallo</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_17 promedio">0.896</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_17 sd">0.121</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_18 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_18 Variable">Taninos (mg/g)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_18 promedio">3.778</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_18 sd">0.781</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_19 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_19 Variable">Cd foliar (mg/g)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_19 promedio">1.077</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_19 sd">0.615</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="A. sessilis stub_2_20 tratamiento">control</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_20 Variable">Lesión foliar (%)</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_20 promedio">11.565</td>
+<td class="gt_row gt_center" headers="A. sessilis stub_2_20 sd">2.241</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Entre los resultados de control los datos no muestran una clara diferencia, las cinco variables calculadas son muy similares entre la especie invasora <em>A. philoxeroides</em> y la especie nativa <em>A. sessilis</em>. En cambio, los datos que resultan de la exposición al cadmio sí muestran una notable diferencia entre las variables de Masa total (biomasa), la concentración de cadmio en las hojas y la lesión foliar. En estas tres variables, la especie invasora muestra una mejor respuesta a la contaminación que la especie nativa.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-0ee35ea3a70932a31793" style="width:100%;height:auto;" class="dt2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0ee35ea3a70932a31793">{"x":{"data":{"ID":["CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKK","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CKL","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDK","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL","CDL"],"Tratamiento":["control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","control","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd","Cd"],"Especie":["A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. philoxeroides","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis","A. sessilis"],"Hojas_seca_g":[1.075,1.4686,1.317,1.1034,1.1034,1.4148,1.3068,1.296,1.2024,1.2384,1.479,1.0818,1.257,1.2291,1.0926,1.3086,1.1452,1.4807,1.2264,1.14,1.3706,1.276,0.928,1.152,0.972,1.089,1.3574,1.15,1.342,1.09,0.9926,0.6792,0.7992,0.8984,1.0544,0.8456,0.6919,0.9468,0.9275,0.7326,0.9317,0.8496,0.708,0.9156,0.7245,0.3655,0.339,0.549,0.7544999999999999,0.6575,0.7145,0.443,0.491,0.78,0.647,0.6825,0.4125,0.3995,0.5915,0.6274999999999999],"Tallo_seco_g":[1.022,1.6728,1.1382,1.0494,1.0755,1.31328,1.3076,1.3276,1.188,1.2064,1.106,1.08815,1.06365,1.076,1.0734,1.5896,1.0904,1.3032,1.104,1.0184,1.284,1.1074,0.834,1.173,0.978,1.074,1.215,0.911,1.255,1.1466,0.8628,0.6294,0.7887,0.7685999999999999,0.9756,0.7236,0.6366000000000001,0.94175,0.81795,0.681,0.94752,0.7827,0.68845,0.7442,0.73,0.3171,0.33858,0.465,0.6292,0.56055,0.64376,0.3012,0.456,0.64856,0.52663,0.54405,0.3599,0.31728,0.48252,0.56868],"Raiz_seca_g":[0.9928,1.277,1.0105,0.9412,0.94545,1.2115,1.18395,1.14135,1.006,1.1652,0.8528,0.9408,0.9072,1.017,1.0602,1.162,0.918,1.173,0.886,0.965,1.3472,1.3456,0.6860000000000001,1.1088,0.83,0.9204,0.9330000000000001,0.86,1.1732,0.9468,0.9196,0.6528,0.6624,0.886,0.9597,0.8110000000000001,0.7296,0.8456,0.9352,0.6392,0.87795,0.6064000000000001,0.5308,0.8924,0.7635999999999999,0.3488,0.3192,0.455,0.527,0.5698,0.7135,0.4446,0.3476,0.7345,0.544,0.6264999999999999,0.4119,0.3608,0.5028,0.584],"Masa_total_g":[3.0898,4.4184,3.4657,3.094,3.12435,3.93958,3.79835,3.76495,3.3964,3.61,3.4378,3.11075,3.22785,3.3221,3.2262,4.0602,3.1536,3.9569,3.2164,3.1234,4.0018,3.729,2.448,3.4338,2.78,3.0834,3.5054,2.921,3.7702,3.1834,2.775,1.9614,2.2503,2.553,2.9897,2.3802,2.0581,2.73415,2.68065,2.0528,2.75717,2.2387,1.92725,2.5522,2.2181,1.0314,0.99678,1.469,1.9107,1.78785,2.07176,1.1888,1.2946,2.16306,1.71763,1.85305,1.1843,1.07758,1.57682,1.78018],"Cd_hoja_mg.g":[1.379886454,1.383661123,1.361027999,0.320602119,0.131886911,1.975154146,1.681144919,3.435718211,2.768128865,1.157298186,3.600130122,0.416972934,2.207176609,0.827352719,1.167531846,2.148735023,1.061957362,0.190084714,1.313033552,0.951924735,1.531512323,1.148590609,1.651696254,1.73883388,1.700849068,1.045009838,0.140466625,0.635635891,0.633007458,0.269317822,31.41,30.93691782,31.21383652,24.52091665,26.37567398,28.56677152,21.65445623,22.05599851,32.25159809,22.0115247,36.45506716,23.70501161,36.13345616,30.63613558,34.25741848,26.61068029,12.69343652,27.25192613,15.6641015,9.524103553,17.45474761,12.07294937,14.59317597,22.78708508,19.54477251,11.43122051,11.46718478,15.73761211,20.48916829,18.37595319],"Taninos_.mg.g.":[3.806434171,3.554757176,2.823365693,4.712395578,3.593486805,4.077326642,2.646807391,2.319873368,3.487100683,3.96645792,2.813886651,4.131076254,3.719582946,2.205950291,4.328636904,4.549446436,3.617337381,4.407106459,4.298731201,2.45754319,4.882134737,3.817854687,3.20107654,3.815527538,3.132603406,3.131866744,3.348171334,2.676953261,4.39458627,4.941044357,4.416484422,3.719628037,3.547083308,3.546337025,3.245556755,3.943137155,3.760014242,4.156220649,3.398810698,3.417959935,3.824334712,4.944002307,3.750582389,3.988196925,4.042672656,3.433974784,3.428013745,4.440220798,3.651591945,3.984576765,3.272595535,3.265537524,3.187631103,3.644846387,4.664187669,4.536733524,3.989821201,3.791701367,3.872335325,2.777682943],"Lesion_foliar_....":[16.50805982,10.65117405,9.503518264,10.30581382,11.79506082,8.273220793,9.645975766999999,8.055213016,16.5791178,10.71416026,11.75123539,11.41846845,10.37589879,11.05546435,9.603250331,9.026615559,12.72337384,12.17596676,13.89777668,13.67646037,10.43962038,7.197628054,9.643593857000001,13.4357584,12.2080062,13.55201355,13.47623926,8.297574416,10.14854358,13.57088935,2.416304805,2.64577535,3.690296278,3.683995088,3.827825951,2.989819475,1.264017631,3.853707341,2.129093114,4.059423044,1.338053689,2.099117715,4.101963082,4.458698373,6.643680094,5.693327931,5.421976741,7.138668351,8.561892323,7.368755728,5.57381735,6.393238338,5.352363961,4.426635034,5.093552959,5.793897349,4.447342462,6.744013259,6.4865202,6.391458687]},"options":{"searching":false,"autowidth":true,"dt2_theme":{"bs":"bootstrap5","striped":true,"hover":true,"compact":true,"font_scale":0.75,"class":null,"button_class":"btn btn-sm btn-outline-secondary"}}},"evals":[],"jsHooks":[]}</script>
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Análisis_expl_files/figure-html/fig-1-1.png" class="img-fluid figure-img" width="672">
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Dimensiones del data frame: 60 Filas, 10 Columnas.</code></pre>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Distribución de Biomasa por especires y tratamiento
+</figcaption>
+</figure>
 </div>
 </div>
-<p>Dado los objetivos y las características de las variables con las variables con las que se realizará es ejercicio, se considera pertinente explorar a partir de estas medidas descriptivas:</p>
-<ul>
-<li><strong>La Media (Promedio):</strong> En este caso, es la medida de tendencia central con mayor peso.</li>
-<li><strong>La Desviación Estándar ():</strong> Para ver qué tan dispersos o variables son los datos de las réplicas.</li>
-<li><strong>El Tamaño de la muestra (N</strong>): El número de observaciones por grupo.</li>
-</ul>
-<p>El resultado de estas medidas se disponen en la tabla 2.</p>
+</div>
+<p>El análisis de la biomasa vegetal reveló una clara inhibición del crecimiento en respuesta a la exposición a cadmio (Cd) en ambas especies, en comparación con sus respectivos controles (<a href="#fig-1" class="quarto-xref">Figura&nbsp;1</a>). En <em>Alternanthera philoxeroides</em>, la masa total promedio se redujo en un 30.55 % del tratamiento control al tratamiento en presencia de Cd. Por su parte, <em>Alternanthera sessilis</em> mostró una susceptibilidad notablemente mayor al metal pesado; su biomasa promedio disminuyó un 54.17 %en exposición al Cd. El histograma nos permite observar que la distribución de la biomasa en los individuos expuestos a Cd presenta un desplazamiento generalizado hacia valores menores, siendo este efecto mucho más acentuado y disperso en A. sessilis.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-6149094fc075afa1a84a" style="width:100%;height:auto;" class="dt2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6149094fc075afa1a84a">{"x":{"data":{"tratamiento":["Cd","Cd","control","control"],"especie":["A. philoxeroides","A. sessilis","A. philoxeroides","A. sessilis"],"N":[15,15,15,15],"biomasa":[2.409,1.54,3.468,3.358],"biomasa_sd":[0.337,0.391,0.379,0.476],"asignacion":[1.003,1.059,0.888,0.896],"asignacion_sd":[0.14,0.162,0.066,0.121],"taninos_prm":[3.847,3.729,3.479,3.778],"taninos_sd":[0.435,0.535,0.755,0.781],"absorcion":[28.812,17.047,1.588,1.077],"absorcion_sd":[5.123,5.485,1.055,0.615],"daño":[3.28,6.059,11.082,11.565],"daño_sd":[1.382,1.12,2.478,2.241]},"options":{"searching":false,"autowidth":true,"dt2_theme":{"bs":"bootstrap5","striped":true,"hover":true,"compact":true,"font_scale":0.75,"class":null,"button_class":"btn btn-sm btn-outline-secondary"}}},"evals":[],"jsHooks":[]}</script>
+<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Análisis_expl_files/figure-html/fig-2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Análisis de correlación lineal entre la biomasa seca total (g) y la concentración de taninos foliares (mg/g) en <em>Alternanthera philoxeroides</em> y <em>Alternanthera sessilis</em> bajo condiciones de control y exposición a cadmio (Cd). Se incluye el coeficiente de correlación de Pearson (R) para cada escenario.
+</figcaption>
+</figure>
 </div>
 </div>
+</div>
+<p>La relación entre la biomasa y la concentración de taninos foliares varió en respuesta al estrés por cadmio (Cd) (<a href="#fig-2" class="quarto-xref">Figura&nbsp;2</a>). En el grupo control, A. sessilis mostró una fuerte correlación positiva (R = 0.66), indicando que la síntesis de taninos aumenta de forma proporcional al desarrollo de la planta, a diferencia de A. philoxeroides que mantuvo una tendencia ligeramente negativa (R = -0.28).</p>
+<p>Bajo la exposición a Cd, las correlaciones lineales se disiparon drásticamente (<em>A. philoxeroides</em> R = -0.042; <em>A. sessilis</em> R = 0.13). Este fenómeno ocurre porque la presencia del metal indujo una acumulación alta y homogénea de taninos en las hojas (valores estables por encima de 3.5 mg/g), sin importar el grado de pequeñez o reducción de biomasa que sufrieran los individuos. Esta respuesta metabólica evidencia que las plantas priorizan la síntesis de taninos como un mecanismo de defensa y aclimatación frente al estrés oxidativo por Cd.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Análisis_expl_files/figure-html/fig-3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Porcentaje de lesión foliar (%) en <em>Alternanthera philoxeroides</em> y <em>Alternanthera sessilis</em> expuestas a tratamiento con cadmio (Cd) y control. Los puntos representan los datos individuales, las líneas internas indican la mediana y las cajas el rango intercuartílico.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Los niveles de lesión foliar evaluados en ambas especies mostraron una respuesta inversa ante la presencia de cadmio (Cd) (<a href="#fig-3" class="quarto-xref">Figura&nbsp;3</a>). Bajo condiciones óptimas (control), los individuos presentaron los mayores índices de daño en sus hojas, alcanzando valores promedio alrededor de 11 % para las dos especies. Sin embargo, al ser expuestas a la toxicidad por Cd, el porcentaje de lesión foliar cayó en ambas especies, registrando valores inferiores al 4% en <em>A. philoxeroides</em> y cercanos al 6% en <em>A. sessilis</em>. Esto sugiere que al mantener las hojas cargadas con estos compuestos defensivos por contrarrestar el estrés que provoca la acumulación del metal, la planta no solo mitiga el daño por el metal, sino que genera una protección colateral contra patógenos oportunistas que suelen atacar a los tejidos debilitados.</p>
 <hr>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Análisis_expl_files/figure-html/Figura%201.%20Distribución%20general%20de%20biomasa-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+</section>
+<section id="conclusiones" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones">Conclusiones</h2>
+<p>La exposición a cadmio indujo cambios considerables en la biomasa, la concentración de taninos y el daño foliar en ambas especies en comparación con el tratamiento control. De forma general, los resultados apuntan a que la especie invasora, <em>Alternanthera philoxeroides</em>, tolera y aprovecha mejor los escenarios de estrés por metales pesados en comparación con su contraparte nativa, <em>Alternanthera sessilis</em>. Si bien ambas especies priorizan la asignación de recursos hacia la producción de taninos para contrarrestar la toxicidad del cadmio, es la especie invasora la que exhibe un desempeño adaptativo superior y un menor costo en términos de pérdida de biomasa.</p>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Sobre los datos
 </div>
 </div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Análisis_expl_files/figure-html/figura%202-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Análisis_expl_files/figure-html/Figura%203-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="callout-body-container callout-body">
+<p>El dataset que se puede descargar en el link de la pestaña ‘Otros enlaces’ corresponde a los datos en bruto de la investigación de <span class="citation" data-cites="lin2025">(<a href="#ref-lin2025" role="doc-biblioref">Lin et&nbsp;al. 2025</a>)</span>.</p>
 </div>
 </div>
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-AthukoralaArachchige2026" class="csl-entry" role="listitem">
+Athukorala Arachchige, Oshadhi Pavithra. 2026. <span>«Effects of Humalite on Plant Growth, Symbiotic Nitrogen Fixation, and the Underlying Molecular Mechanism in Red Clover (Trifolium Pratense L.)»</span>. Tesis doctoral. <a href="https://doi.org/10.7939/84462">https://doi.org/10.7939/84462</a>.
+</div>
+<div id="ref-dagdag2023" class="csl-entry" role="listitem">
+Dagdag, Omar, Taiwo W. Quadri, Rajesh Haldhar, et&nbsp;al. 2023. <em>An Overview of Heavy Metal Pollution and Control</em>. American Chemical Society. <a href="https://doi.org/10.1021/bk-2023-1456.ch001">https://doi.org/10.1021/bk-2023-1456.ch001</a>.
+</div>
+<div id="ref-gt" class="csl-entry" role="listitem">
+Iannone, Richard, Joe Cheng, Barret Schloerke, et&nbsp;al. 2026. <em>gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://doi.org/10.32614/CRAN.package.gt">https://doi.org/10.32614/CRAN.package.gt</a>.
+</div>
+<div id="ref-ggpubr" class="csl-entry" role="listitem">
+Kassambara, Alboukadel. 2026. <em>ggpubr: ’ggplot2’ Based Publication Ready Plots</em>. <a href="https://doi.org/10.32614/CRAN.package.ggpubr">https://doi.org/10.32614/CRAN.package.ggpubr</a>.
+</div>
 <div id="ref-lin2025" class="csl-entry" role="listitem">
 Lin, Tiantian, Abdul Manan, Shuya Yang, et&nbsp;al. 2025. <span>«Heavy Metal Pollution Enhances Pathogen Resistance of an Invasive Plant Species over Its Native Congener»</span>. <em>Functional Ecology</em> 39 (4): 1096-111. <a href="https://doi.org/10.1111/1365-2435.70011">https://doi.org/10.1111/1365-2435.70011</a>.
+</div>
+<div id="ref-RStudio" class="csl-entry" role="listitem">
+Posit Team. 2026. <em>RStudio: Integrated Development Environment for R</em>. Posit Software, PBC. <a href="http://www.posit.co/">http://www.posit.co/</a>.
+</div>
+<div id="ref-base" class="csl-entry" role="listitem">
+R Core Team. 2026. <em>R: A Language and Environment for Statistical Computing</em>. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-s2016" class="csl-entry" role="listitem">
+S, Kucuk. 2016. <span>«Heavy Metal Pollution: Copper»</span>. <em>International Journal of Zoology and Animal Biology</em> 1 (5). <a href="https://doi.org/10.23880/izab-16000127">https://doi.org/10.23880/izab-16000127</a>.
+</div>
+<div id="ref-ggplot2" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>ggplot2: Elegant Graphics for Data Analysis</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, et&nbsp;al. 2019. <em>Welcome to the <span></span>tidyverse<span></span></em>. 4: 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-xie2022" class="csl-entry" role="listitem">
+Xie, Qinyuan. 2022. <span>«Heavy Metals Pollution and Potential Ecological Health Risk Assessment in the Yangtze River Reaches»</span>. <em>SSRN Electronic Journal</em>, advance online publication. <a href="https://doi.org/10.2139/ssrn.4302985">https://doi.org/10.2139/ssrn.4302985</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->
