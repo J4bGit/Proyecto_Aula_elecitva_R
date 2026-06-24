@@ -152,7 +152,7 @@ ggplot(datos_eda, aes(masa_total_g,color = tratamiento)) +
 
 ```
 
-El análisis de la biomasa vegetal reveló una clara inhibición del crecimiento en respuesta a la exposición a cadmio (Cd) en ambas especies, en comparación con sus respectivos controles (@fig-1). En *Alternanthera philoxeroides*, la masa total promedio se redujo en un `r paste(round((3.47-2.41)*100/3.47,2),"%")` del tratamiento control al tratamiento en presencia de Cd. Por su parte, *Alternanthera sessilis* mostró una susceptibilidad notablemente mayor al metal pesado; su biomasa promedio disminuyó un `r paste(round((3.36-1.54)*100/3.36,2),"%")`en exposición al Cd. El histograma nos permite observar que la distribución de la biomasa en los individuos expuestos a Cd presenta un desplazamiento generalizado hacia valores menores, siendo este efecto mucho más acentuado y disperso en A. sessilis.
+El análisis de la biomasa vegetal reveló una clara inhibición del crecimiento en respuesta a la exposición a cadmio (Cd) en ambas especies, en comparación con sus respectivos controles (@fig-1). En *Alternanthera philoxeroides*, la masa total promedio se redujo en un `r paste(round((3.47-2.41)*100/3.47,2),"%")` del tratamiento control al tratamiento en presencia de Cd. Por su parte, *Alternanthera sessilis* mostró una susceptibilidad notablemente mayor al metal pesado; su biomasa promedio disminuyó un `r paste(round((3.36-1.54)*100/3.36,2),"%")` en exposición al Cd. El histograma nos permite observar que la distribución de la biomasa en los individuos expuestos a Cd presenta un desplazamiento generalizado hacia valores menores, siendo este efecto mucho más acentuado y disperso en A. sessilis.
 
 ```{r}
 #| label: fig-2
