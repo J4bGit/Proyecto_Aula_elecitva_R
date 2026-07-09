@@ -1,0 +1,203 @@
+---
+title: "Avance Informe Final"
+author: "Jair Barrera"
+date: "2026-07-09"
+lang: es
+format: 
+ html:
+   theme: Journal
+   toc: true
+   toc-depth: 3
+   toc-title: "Contenido"
+   code-fold: true
+echo: false
+message: false
+warning: false
+---
+```{r}
+library(tidyverse)
+library(gt)
+library(ggpubr)
+```
+
+## Objetivo
+
+Se busca dar respuesta a la siguiente pregunta: **¿Difiere el impacto del Cadmio (Cd) sobre la producción de biomasa y la acumulación de metabolitos secundarios foliares al comparar la especie invasora (*Alternanthera philoxeroides*) con la especie nativa (*Alternanthera sessilis*)?**.\
+\
+Y cumplir los siguientes objetivos:
+
+- Analizar la asignación de biomasa: Describir y comparar la distribución de la masa seca entre la raíz y el tallo (relación raíz/tallo) en ambas especies bajo condiciones de control y tratamiento con cadmio.
+
+- Explorar los costos de tolerancia: Determinar la relación existente entre la inversión en taninos y el crecimiento global (biomasa seca total) para identificar posibles costos energéticos de defensa en cada especie.
+
+- Evaluar el daño físico frente a la absorción: Caracterizar el porcentaje de área foliar lesionada en función de la concentración de cadmio acumulado en las hojas.
+
+## Hipótesis 
+
+#### Para la Biomasa Total:
+
+- $H_0$ (Hipótesis Nula): El efecto de la exposición al Cadmio sobre la producción de biomasa es idéntico en *A. philoxeroides* y *A. sessilis*.
+- $H_1$ (Hipótesis Alternativa): El efecto de la exposición al Cadmio sobre la producción de biomasa difiere significativamente entre ambas especies.
+
+#### Para la Concentración de Taninos:
+
+- $H_0$ (Hipótesis Nula): La respuesta en la acumulación de taninos foliares ante la presencia de Cadmio no difiere entre la especie invasora (*A. philoxeroides*) y la especie nativa (*A. sessilis*).
+
+- $H_1$ (Hipótesis Alternativa): La acumulación de taninos foliares inducida por la presencia de Cadmio difiere significativamente entre ambas especies.
+
+## Análisis inferencial 
+
+Para dar respuesta a la pregunta central se busca realizar dos modelos anova independientes (Uno para biomasa y otro para taninos) siempre y cuando se cumplan los supuestos.Si la interacción es significativa, se procede con una prueba post-hoc de Tukey (Tukey HSD) para comparar pares específicos.
+
+```{r}
+#| label: Data frame
+Datos <- read.csv("Datos/datos_limpios.csv")
+
+datos_eda <- Datos |> 
+  mutate(relacion_R_T = Raiz_seca_g / Tallo_seco_g)
+
+colnames(datos_eda) <- c(
+  "ID", "tratamiento", "especie", "hoja_seca_g", 
+  "tallo_seco_g", "raiz_seca_g", "masa_total_g", 
+  "Cd_hoja_mg/g", "taninos_(mg/g)", "lesión_foliar_(%)", "relacion_r/t"
+)
+```
+
+
+
+```{r}
+#| echo: false
+
+anova_biomasa <- aov(masa_total_g ~ especie * tratamiento, data = datos_eda)
+
+summary(anova_biomasa)
+```
+
+*Prueba de supuestos*
+
+```{r}
+# Comprobar supuestos del modelo
+# a) Normalidad de los residuales
+shapiro.test(residuals(anova_biomasa))
+
+# b) Homogeneidad de varianzas (Homocedasticidad)
+car::leveneTest(masa_total_g ~ especie * tratamiento, data = datos_eda)
+
+
+```
+
+
+
+Se encontró un efecto de interacción altamente significativo entre la especie y el tratamiento con cadmio sobre la producción de biomasa seca total (F = 13.52, p < 0.001). Este resultado confirma que el efecto inhibitorio del cadmio sobre la biomasa no afecta por igual a ambas especies. Asimismo, se detectaron diferencias significativas independientes tanto para el factor especie.
+
+
+```{r}
+TukeyHSD(anova_biomasa, which = "especie:tratamiento")
+```
+
+
+
+La prueba de comparaciones post-hoc confirmó que en condiciones de control no existieron diferencias estadísticamente significativas en la biomasa seca total entre ambas especies (p = 0.872). Si bien la exposición a cadmio indujo una disminución significativa de la biomasa en ambas plantas, la magnitud del impacto difirió entre ellas: Alternanthera sessilis sufrió una pérdida promedio de 1.82g respecto a su control, mientras que Alternanthera philoxeroides registró una reducción de 1.06g. En consecuencia, bajo tratamiento con cadmio, la especie invasora (A. philoxeroides) conservó una biomasa promedio significativamente mayor en comparación con la especie nativa (A. sessilis) (diferencia = -0.87g, evidenciando un desempeño vegetativo superior bajo estrés por metales pesados.
+
+
+
+```{r}
+#| echo: false
+
+anova_taninos <- aov( datos_eda$`taninos_(mg/g)` ~ especie * tratamiento, data = datos_eda)
+
+
+# a) Normalidad de los residuales
+shapiro.test(residuals(anova_taninos))
+
+# b) Homogeneidad de varianzas (Homocedasticidad)
+car::leveneTest(datos_eda$`taninos_(mg/g)`~ especie * tratamiento, data = datos_eda)
+
+summary(anova_taninos)
+
+```
+
+
+
+El análisis de varianza para la concentración de taninos foliares no mostró un efecto de interacción significativo entre la especie y el tratamiento. De igual forma, no se observaron diferencias estadísticamente significativas para los efectos principales de especie ni de tratamiento. En consecuencia, los promedios globales de concentración de taninos se mantuvieron homogéneos entre los grupos evaluados. Este es un resultado que se contrastará con la relación mostrada en el informe exploratorio.  
+
+**Objetivo 1**:
+
+```{r}
+#| label: objetivo 1
+
+ggplot(datos_eda, aes(x = especie, y = `relacion_r/t`, fill = tratamiento)) +
+  geom_boxplot() +
+  geom_jitter(position = position_dodge(0.75), alpha = 0.5) +
+  labs(y = "Relación Raíz / Tallo (g/g)", title = "Asignación de Biomasa") +
+  theme_minimal()
+
+
+anova_rt <- aov( datos_eda$`relacion_r/t` ~ especie * tratamiento, data = datos_eda)
+
+
+# a) Normalidad de los residuales
+shapiro.test(residuals(anova_rt))
+
+# b) Homogeneidad de varianzas (Homocedasticidad)
+car::leveneTest(datos_eda$`relacion_r/t`~ especie * tratamiento, data = datos_eda)
+
+summary(anova_rt)
+
+TukeyHSD(anova_rt, which = "tratamiento")
+
+```
+
+Aquí solo muestra diferenccia significativa en el tratamiento.
+
+
+**objetivo 2**
+
+```{r}
+#| label: fig-2
+#| fig-cap: "Análisis de correlación lineal entre la biomasa seca total (g) y la concentración de taninos foliares (mg/g) en *Alternanthera philoxeroides* y *Alternanthera sessilis* bajo condiciones de control y exposición a cadmio (Cd). Se incluye el coeficiente de correlación de Pearson (R) para cada escenario."
+
+ggplot(datos_eda, aes(masa_total_g,`taninos_(mg/g)`,
+                      )) +
+         geom_point(size = 2) +
+  geom_smooth(method = "lm", se = FALSE, size = 1) +
+  facet_grid(tratamiento~especie, scales = "free_y") +
+  stat_cor(
+    method = "pearson", 
+    label.x.npc = "left", 
+    label.y.npc = "top"
+  ) + 
+  theme_bw() +
+  labs(
+    x = "Biomasa Seca Total (g)",
+    y = "Taninos en hojas (mg/g)"
+  )
+       
+```
+
+
+**objetivo 3**
+
+```{r}
+# 1. Visualización con curva/línea de regresión por especie
+ggplot(datos_eda, aes(x = `Cd_hoja_mg/g`, y = `lesión_foliar_(%)`, color = especie)) +
+  geom_point(size = 2.5, alpha = 0.8) +
+  geom_smooth(method = "lm", se = T) +
+  facet_wrap(~ especie, scales = "free_y") +
+  stat_cor(
+    method = "pearson", 
+    label.x.npc = "center", 
+    label.y.npc = "top"
+  ) +
+  labs(
+    x = "Cadmio acumulado en hojas (mg/kg)",
+    y = "Lesión foliar (%)",
+    title = "Sensibilidad del tejido foliar frente a la acumulación de Cd"
+  ) +
+  theme_bw()
+
+# 2. Modelo de Regresión / ANCOVA (Evaluación de pendientes)
+ancova <- lm(`lesión_foliar_(%)` ~ `Cd_hoja_mg/g` * especie, data = datos_eda)
+summary(ancova)
+```
+

@@ -37,11 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="Informe_final_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Informe_final_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Informe_final_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<<<<<<< HEAD
 <link href="Informe_final_files/libs/bootstrap/bootstrap-ebda192607b4aaa0c2c12f42de2f2d18.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-=======
-<link href="Informe_final_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
->>>>>>> 3743caf96908f317cc754531b6b5100230765a57
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -75,7 +71,6 @@ window.Quarto = {
 
 </head>
 
-<<<<<<< HEAD
 <body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
@@ -90,12 +85,6 @@ window.Quarto = {
   </ul>
 </nav>
 </div>
-=======
-<body class="fullcontent quarto-light">
-
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
->>>>>>> 3743caf96908f317cc754531b6b5100230765a57
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -117,7 +106,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">24 de junio de 2026</p>
+      <p class="date">9 de julio de 2026</p>
     </div>
   </div>
   
@@ -159,7 +148,6 @@ Y cumplir los siguientes objetivos:</p>
 </section>
 <section id="análisis-inferencial" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-inferencial">Análisis inferencial</h2>
-<<<<<<< HEAD
 <p>Para dar respuesta a la pregunta central se busca realizar dos modelos anova independientes (Uno para biomasa y otro para taninos) siempre y cuando se cumplan los supuestos.Si la interacción es significativa, se procede con una prueba post-hoc de Tukey (Tukey HSD) para comparar pares específicos.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -167,21 +155,11 @@ Y cumplir los siguientes objetivos:</p>
 especie              1  3.594   3.594   22.56 1.46e-05 ***
 tratamiento          1 31.047  31.047  194.90  &lt; 2e-16 ***
 especie:tratamiento  1  2.153   2.153   13.52 0.000532 ***
-=======
-<p>Para dar respuesta a la pregunta central se busca realizar dos modelos anova independientes (Uno para biomasa y otro para taninos).Si la interacción es significativa, se procede con una prueba post-hoc de Tukey (Tukey HSD) para comparar pares específicos.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Especie              1  3.594   3.594   22.56 1.46e-05 ***
-Tratamiento          1 31.047  31.047  194.90  &lt; 2e-16 ***
-Especie:Tratamiento  1  2.153   2.153   13.52 0.000532 ***
->>>>>>> 3743caf96908f317cc754531b6b5100230765a57
 Residuals           56  8.921   0.159                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<<<<<<< HEAD
 <p><em>Prueba de supuestos</em></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -198,23 +176,15 @@ group  3  0.6331 0.5968
       56               </code></pre>
 </div>
 </div>
-=======
->>>>>>> 3743caf96908f317cc754531b6b5100230765a57
 <p>Se encontró un efecto de interacción altamente significativo entre la especie y el tratamiento con cadmio sobre la producción de biomasa seca total (F = 13.52, p &lt; 0.001). Este resultado confirma que el efecto inhibitorio del cadmio sobre la biomasa no afecta por igual a ambas especies. Asimismo, se detectaron diferencias significativas independientes tanto para el factor especie.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
 
-<<<<<<< HEAD
 Fit: aov(formula = masa_total_g ~ especie * tratamiento, data = datos_eda)
 
 $`especie:tratamiento`
-=======
-Fit: aov(formula = Masa_total_g ~ Especie * Tratamiento, data = datos_eda)
-
-$`Especie:Tratamiento`
->>>>>>> 3743caf96908f317cc754531b6b5100230765a57
                                                    diff        lwr        upr
 A. sessilis:Cd-A. philoxeroides:Cd           -0.8683473 -1.2542443 -0.4824503
 A. philoxeroides:control-A. philoxeroides:Cd  1.0598340  0.6739370  1.4457310
@@ -232,7 +202,6 @@ A. sessilis:control-A. philoxeroides:control 0.8723229</code></pre>
 </div>
 </div>
 <p>La prueba de comparaciones post-hoc confirmó que en condiciones de control no existieron diferencias estadísticamente significativas en la biomasa seca total entre ambas especies (p = 0.872). Si bien la exposición a cadmio indujo una disminución significativa de la biomasa en ambas plantas, la magnitud del impacto difirió entre ellas: Alternanthera sessilis sufrió una pérdida promedio de 1.82g respecto a su control, mientras que Alternanthera philoxeroides registró una reducción de 1.06g. En consecuencia, bajo tratamiento con cadmio, la especie invasora (A. philoxeroides) conservó una biomasa promedio significativamente mayor en comparación con la especie nativa (A. sessilis) (diferencia = -0.87g, evidenciando un desempeño vegetativo superior bajo estrés por metales pesados.</p>
-<<<<<<< HEAD
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -349,8 +318,6 @@ Multiple R-squared:  0.7035,    Adjusted R-squared:  0.6876
 F-statistic: 44.28 on 3 and 56 DF,  p-value: 8.446e-15</code></pre>
 </div>
 </div>
-=======
->>>>>>> 3743caf96908f317cc754531b6b5100230765a57
 </section>
 
 </main>
