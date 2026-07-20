@@ -11,6 +11,7 @@ format:
     toc-title: "Contenido"
     code-fold: true
     code-summary: "Mostrar código"
+    theme: cosmo
     other-links: 
        - text: Datos
          href:  https://datadryad.org/dataset/doi:10.5061/dryad.h44j0zpv1#citations 
