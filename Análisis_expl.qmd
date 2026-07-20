@@ -1,8 +1,8 @@
 ---
-title: "Efecto del Cadmio en plantas invasoras y nativas"
-subtitle: "Análisis Exploratorio"
+title: "Impacto del cadmio en la asimetría competitiva entre *Alternanthera philoxeroides* y *Alternanthera sessilis*"
+subtitle: "Evaluación del crecimiento y respuesta bioquímica bajo estrés por metales pesados" 
 author: "Jair Barrera"
-date: "2026-06-24"
+date: "2026-07-21"
 lang: es
 format:
   html:
@@ -27,6 +27,11 @@ warning: false
 library(tidyverse)
 library(gt)
 library(ggpubr)
+library(emmeans)
+library(multcomp)
+library(multcompView)
+library(patchwork)
+library(broom)
 ```
 
 ```{r}
@@ -37,9 +42,38 @@ Datos <- read.csv("Datos/datos_limpios.csv")
 
 ## Introducción
 
-La contaminación por metales es un grave problema ambiental provocado por la liberación de iones metales pesados al medio ambiente natural. Las actividades humanas como la minería, la agricultura y los procesos industriales han contribuido significativa mente al aumento de la contaminación por metales en el suelo, el agua y el aire [@dagdag2023; @s2016]. Por tal motivo es de mucha irelevancia su estudio en cualquier área ambiental [@xie2022]. Para la ecología vegetal y la industria de la agricultura la contaminación de suelos por parte de los metales pesados es importante porque plantea graves peligros para el funcionamiento y crecimiento adecuado de las plantas [@AthukoralaArachchige2026]. Un problema ecológico curioso, es que ante esta contaminación muchas especies de plantas invasoras han demostrado una mayor capacidad para tolerar y acumular metales pesados que sus plantas nativas coexistentes [@lin2025].
+La contaminación por metales es un grave problema ambiental provocado por la liberación de iones metales pesados al medio ambiente natural. Las actividades humanas como la minería, la agricultura y los procesos industriales han contribuido significativa mente al aumento de la contaminación por metales en el suelo, el agua y el aire [@dagdag2023; @s2016]. Por tal motivo es de mucha relevancia su estudio en cualquier área ambiental [@xie2022]. Para la ecología vegetal y la industria de la agricultura la contaminación de suelos por parte de los metales pesados es importante porque plantea graves peligros para el funcionamiento y crecimiento adecuado de las plantas [@AthukoralaArachchige2026]. Un problema ecológico curioso, es que ante esta contaminación muchas especies de plantas invasoras han demostrado una mayor capacidad para tolerar y acumular metales pesados que sus plantas nativas coexistentes. [@lin2025].
 
-Para analizar este problema ecológico, este ejercicio de investigación compara una especie invasora con una nativa en términos de producción de biomasa y acumulación de metabolitos secundarios al ser expuestas a cadmio. Por lo tanto, se plantea la siguiente pregunta: **¿Difiere el impacto del Cadmio (Cd) sobre la producción de biomasa y la acumulación de metabolitos secundarios foliares al comparar la especie invasora (*Alternanthera philoxeroides*) con la especie nativa (*Alternanthera sessilis*)?**.
+Para analizar este problema ecológico, este ejercicio de investigación compara una especie invasora con una nativa en términos de producción de biomasa y acumulación de metabolitos secundarios al ser expuestas a cadmio. y evalúa los efectos de sus desarrollo bajo estas condiciones en términos de daño foliar.
+
+### Pregunta de investigación:
+
+¿Difiere el impacto del cadmio (Cd) sobre la biomasa y la acumulación de taninos foliares al comparar la especie invasora (*Alternanthera philoxeroides*) con la nativa (*Alternanthera sessilis*), y en qué efecto se traduce este impacto ?.
+
+**Objetivo general**
+
+Comparar las respuestas morfológicas (biomasa) y bioquímicas (producción de taninos) de las especies *Alternanthera philoxeroides* y *Alternanthera sessilis* ante la exposición a suelos contaminados con Cadmio (Cd).
+
+**Objetivos específicos**
+
+- Determinar la relación existente entre la inversión en taninos y el crecimiento global (biomasa seca total) para identificar posibles costos energéticos de defensa en cada especie.
+
+- Evaluar de forma descriptiva el efecto de la exposición al cadmio en términos de daño al tejido foliar y asignación de biomasa.
+
+### Hipótesis
+
+#### Para la Biomasa Total:
+
+- ***H~0~*** : El efecto de la exposición al Cadmio sobre la producción de biomasa es idéntico en *A. philoxeroides* y *A. sessilis*.
+- ***H***1 : El efecto de la exposición al Cadmio sobre la producción de biomasa difiere significativamente entre ambas especies.
+
+#### Para la Concentración de Taninos:
+
+- ***H~0~*** : La respuesta en la acumulación de taninos foliares ante la presencia de Cadmio no difiere entre la especie invasora (*A. philoxeroides*) y la especie nativa (*A. sessilis*).
+
+- ***H~1~*** : La acumulación de taninos foliares inducida por la presencia de Cadmio difiere significativamente entre ambas especies.
+
+------------------------------------------------------------------------
 
 ## Metodología
 
@@ -59,17 +93,19 @@ colnames(datos_eda) <- c(
 
 ```
 
-Se descargaron datos que corresponden a la investigación hecha por [@lin2025] A través de la plataforma online DRYAD. Los datos fueron limpiados y transformados a formato csv para su análisis bajo el lenguaje de programación [@base] usando el la interfaz de [@RStudio]. El resultado fue `r paste("un data frame con",nrow(datos_eda), "filas y", ncol(datos_eda),"columnas.")` Para el procesamiento de datos se usó el paquete "tidyverse" [@tidyverse], la representación de gráficas se ejecutaron a través de los paquetes "ggplot2" y "ggpubr" [@ggplot2; @ggpubr] y las tablas se presentan usando el paquete "gt" [@gt].
+Se descargaron datos que corresponden a la investigación hecha por [@lin2025] a través de la plataforma online DRYAD. Los datos fueron limpiados y transformados a formato csv para su análisis bajo el lenguaje de programación "R" [@base] usando el la interfaz de Rstudio [@RStudio]. El resultado fue `r paste("un data frame con",nrow(datos_eda), "filas y", ncol(datos_eda),"columnas.")` Para el procesamiento de datos se usó el paquete "tidyverse" [@tidyverse], la representación de gráficas se ejecutaron a través de los paquetes "ggplot2" y "ggpubr" [@ggplot2; @ggpubr] y las tablas se presentan usando el paquete "gt" [@gt].
 
 ------------------------------------------------------------------------
 
 ## Resultados
 
-Dados los objetivos del estudio y la naturaleza de las variables, se seleccionaron el promedio y la desviación estándar como estadísticas descriptivas para evaluar la tendencia central y la variabilidad de las réplicas, cuyos resultados se presentan en la @tbl-tabla1. Asimismo, con el fin de explorar los datos y obtener un panorama preliminar, se generó un histograma de la distribución de la biomasa por tratamiento (@fig-1), se evaluó la relación entre la biomasa y la concentración de taninos foliares (@fig-2), y se analizaron las diferencias en el daño foliar (@fig-3).
+### Análisis exploratorio de datos.
+
+Dados los objetivos del estudio y la naturaleza de las variables, se seleccionaron el promedio y la desviación estándar como estadísticas descriptivas para evaluar la tendencia central y la variabilidad de las réplicas, cuyos resultados se presentan en la @tbl-tabla1. Asimismo, con el fin de explorar los datos y obtener un panorama preliminar, se generó un histograma de la distribución de la biomasa por tratamiento (@fig-1), y se analizaron las diferencias en el daño foliar y la asignación de biomasa a través de la relación raíz/tallo (@fig-2).
 
 ```{r}
 #| label: tbl-tabla1
-#| tbl-cap: "**Resumen estadístico de variables**" 
+ 
 
 # creación de la tabla con el resumen estadístico.
 
@@ -98,27 +134,42 @@ resumen_estadistico <- datos_eda |>
       Variable == "biomasa"   ~ "Masa total (g)",
       Variable == "relacionrt"  ~ "Relación Raíz/Tallo",
       Variable == "taninos"   ~ "Taninos (mg/g)",
-      Variable == "Cdfoliar"        ~ "Cd foliar (mg/g)", # Ajuste por nombres compuestos
+      Variable == "Cdfoliar"        ~ "Cd foliar (mg/g)", 
       Variable == "Cdfoliar_sd" ~ "Cd foliar (mg/g)",
       Variable == "lesion"    ~ "Lesión foliar (%)",
       TRUE ~ Variable
     )
   ) |>
   
-  gt(
-    groupname_col = "especie",
-    row_group_as_column = T,
-  ) |> 
+  gt(groupname_col = "especie",
+     row_group_as_column = T,
+     ) |> 
+  
+  tab_header(title = md("**Resumen estadístico**"),
+             subtitle = md("Variables estadísticas exploratorias")) |>
+  
+  opt_align_table_header(align = "left") |>
+  
+  tab_stubhead(label = "Especie") |> 
   cols_label(
-    especie = "Especie",
-    Variable = "Variable ",
+    tratamiento = "Tratamiento",
+    Variable = "Variable",
     promedio = "Promedio",
     sd = "Desviación Estándar"
   ) |> 
   cols_align(
     align = "center",
-    columns = c(Variable,promedio, sd)
-  ) 
+    columns = c(tratamiento, Variable,promedio, sd)
+  ) |> 
+  tab_style(
+    style = cell_text(style = "italic"),
+    locations = cells_row_groups()
+  ) |> 
+  tab_options(
+    column_labels.font.weight = "bold",
+    table.border.top.color = "black"
+    )
+  
   
 
 resumen_estadistico  
@@ -129,86 +180,289 @@ Entre los resultados de control los datos no muestran una clara diferencia, las 
 ```{r}
 #| label: fig-1
 #| message: false
-#| fig-cap: "Distribución de Biomasa por especires y tratamiento"
+#| fig-cap: "Distribución de Biomasa por especies y tratamiento"
 
-# primero calcularé la media por los grupos. me servirá para la figura.
-
+# Calculo de la media por los grupos. 
 x1 <- datos_eda |>  
   group_by(tratamiento,especie) |>  
   summarise(grp_mean = round(mean(masa_total_g),2), .groups = "drop")
 
-ggplot(datos_eda, aes(masa_total_g,color = tratamiento)) +
-  geom_histogram(fill= "white",alpha= 0.5, position = "identity") +
-  facet_wrap(~especie, ncol = 1,) +
+# paleta de colores proyecto
+colores_proyecto <- c("control" = "#2B4C7E", "Cd" = "#E26D5C")
+
+#configuración del histograma
+ggplot(datos_eda, aes(x = masa_total_g, fill = tratamiento, color = tratamiento)) +
+  geom_histogram(alpha = 0.7, position = "identity", bins = 18, linewidth = 0.5) +
+  facet_wrap(~especie, ncol = 1) + 
+  
+# línea de media
   geom_vline(data = x1, 
-             aes(xintercept = grp_mean, color = tratamiento, linetype = "Media de masa"), 
-             linewidth = 0.80, show.legend = TRUE) +
-  geom_text(data = x1, aes(x = grp_mean, y = Inf, label = grp_mean, color = tratamiento), 
-            vjust = 1.5, hjust = -0.2, show.legend = F) +
-  labs(y = "Número de plantas", x = "Masa total (g)") +
-  scale_linetype_manual(name = NULL, values = c("Media de masa" = 4)) +
-  theme_minimal()
-    
+             aes(xintercept = grp_mean, color = tratamiento, linetype = "Media de masa"), linewidth = 0.8, show.legend = TRUE) +
+  
+# Etiquetas de la media 
+  geom_text(data = x1, aes(x = grp_mean, y = Inf, label = round(grp_mean, 2), color = tratamiento),vjust = 2, hjust = -0.3, fontface = "bold", size = 3.5, show.legend = FALSE) +
+  
+# identidad visual del proyecto
+  scale_fill_manual(values = colores_proyecto) +
+  scale_color_manual(values = colores_proyecto) +
+  scale_linetype_manual(name = NULL, values = c("Media de masa" = "dashed")) +
+  
+  # Etiquetas limpias
+  labs(
+    y = "Número de plantas", 
+    x = "Masa total (g)",
+    fill = "Tratamiento",
+    color = "Tratamiento"
+  ) +
+  
+# formato del tema
+  theme_pubr(base_size = 11) +
+  theme(
+    strip.background = element_rect(fill = "#F4F5F7", color = NA), 
+    strip.text = element_text(face = "italic", size = 11),         
+    panel.grid.major.y = element_line(color = "#E5E5E5", linewidth = 0.3), 
+    legend.position = "right"
+  )
+
 
 ```
 
-El análisis de la biomasa vegetal reveló una clara inhibición del crecimiento en respuesta a la exposición a cadmio (Cd) en ambas especies, en comparación con sus respectivos controles (@fig-1). En *Alternanthera philoxeroides*, la masa total promedio se redujo en un `r paste(round((3.47-2.41)*100/3.47,2),"%")` del tratamiento control al tratamiento en presencia de Cd. Por su parte, *Alternanthera sessilis* mostró una susceptibilidad notablemente mayor al metal pesado; su biomasa promedio disminuyó un `r paste(round((3.36-1.54)*100/3.36,2),"%")` en exposición al Cd. El histograma nos permite observar que la distribución de la biomasa en los individuos expuestos a Cd presenta un desplazamiento generalizado hacia valores menores, siendo este efecto mucho más acentuado y disperso en A. sessilis.
+El análisis de la biomasa vegetal reveló una inhibición del crecimiento en respuesta a la exposición a cadmio (Cd) en ambas especies, en comparación con sus respectivos controles (@fig-1). En *Alternanthera philoxeroides*, la masa total promedio se redujo en un `r paste(round((3.47-2.41)*100/3.47,2),"%")` del tratamiento control al tratamiento en presencia de Cd. Por su parte, *Alternanthera sessilis* mostró una susceptibilidad notablemente mayor al metal pesado; su biomasa promedio disminuyó un `r paste(round((3.36-1.54)*100/3.36,2),"%")` en exposición al Cd. El histograma nos permite observar que la distribución de la biomasa en los individuos expuestos a Cd presenta un desplazamiento generalizado hacia valores menores, siendo este efecto mucho más acentuado y disperso en A. sessilis.
 
 ```{r}
 #| label: fig-2
-#| fig-cap: "Análisis de correlación lineal entre la biomasa seca total (g) y la concentración de taninos foliares (mg/g) en *Alternanthera philoxeroides* y *Alternanthera sessilis* bajo condiciones de control y exposición a cadmio (Cd). Se incluye el coeficiente de correlación de Pearson (R) para cada escenario."
+#| fig-cap: "(A) Porcentaje de lesión foliar (%) en *Alternanthera philoxeroides* y *Alternanthera sessilis* expuestas a tratamiento con cadmio (Cd) y control.(B) Diferencia entre de asdiganción de Biomasa de la planta, si raíz o tallo, al ser expuesta al Cd. Los puntos representan los datos individuales, las líneas internas indican la mediana y las cajas el rango intercuartílico."
+#| fig-width: 7
+#| fig-height: 8
 
-ggplot(datos_eda, aes(masa_total_g,`taninos_(mg/g)`,
-                      )) +
-         geom_point(size = 2) +
-  geom_smooth(method = "lm", se = FALSE, size = 1) +
-  facet_grid(tratamiento~especie, scales = "free_y") +
-  stat_cor(
-    method = "pearson", 
-    aes(label = ..r.label..), # <-- Esto extrae solo el coeficiente R
-    label.x.npc = "left", 
-    label.y.npc = "top"
-  ) + 
-  theme_minimal() +
-  labs(
-    x = "Biomasa Seca Total (g)",
-    y = "Taninos en hojas (mg/g)"
-  )
-       
-```
-
-La relación entre la biomasa y la concentración de taninos foliares varió en respuesta al estrés por cadmio (Cd) (@fig-2). En el grupo control, A. sessilis mostró una fuerte correlación positiva (R = 0.66), indicando que la síntesis de taninos aumenta de forma proporcional al desarrollo de la planta, a diferencia de A. philoxeroides que mantuvo una tendencia ligeramente negativa (R = -0.28).
-
-Bajo la exposición a Cd, las correlaciones lineales se disiparon drásticamente (*A. philoxeroides* R = -0.042; *A. sessilis* R = 0.13). Este fenómeno ocurre porque la presencia del metal indujo una acumulación alta y homogénea de taninos en las hojas (valores estables por encima de 3.5 mg/g), sin importar el grado de pequeñez o reducción de biomasa que sufrieran los individuos. Esta respuesta metabólica evidencia que las plantas priorizan la síntesis de taninos como un mecanismo de defensa y aclimatación frente al estrés oxidativo por Cd.
-
-```{r}
-#| label: fig-3
-#| fig-cap: "Porcentaje de lesión foliar (%) en *Alternanthera philoxeroides* y *Alternanthera sessilis* expuestas a tratamiento con cadmio (Cd) y control. Los puntos representan los datos individuales, las líneas internas indican la mediana y las cajas el rango intercuartílico."
-ggplot(datos_eda, aes(especie,`lesión_foliar_(%)`,
-                      fill = tratamiento)) +
+# box-plot lesion foliar
+box_lf <- ggplot(datos_eda, aes(especie,`lesión_foliar_(%)`,
+                      fill = tratamiento,)) +
          geom_boxplot() + 
   facet_wrap(~tratamiento) +
       geom_jitter(color="black", size=0.4, alpha=0.9) +
-    theme_minimal() +
-    theme(
-      legend.position="none",
-      plot.title = element_text(size=10)
-    ) +
+  # identidad visual del proyecto
+  scale_fill_manual(values = colores_proyecto) +
+  #etiqutas de eje
   labs(y = "Lesión Foliar (%)",
-       x = "Especie")
+       x = "Especie") +
+  #formato de tema
+  theme_pubr(base_size = 11) +
+   theme(
+    strip.background = element_rect(fill = "#F4F5F7", color = NA), 
+    strip.text = element_text(size = 10),
+    panel.grid.major.y = element_line(color = "#E5E5E5", linewidth = 0.3), 
+    legend.position = "none",
+    axis.text.x.bottom = element_text(face = "italic")
+   )
+
+# box-plot relacion rt
+box_rt <- ggplot(datos_eda, aes(especie,`relacion_r/t`,
+                      fill = tratamiento,)) +
+         geom_boxplot() + 
+  facet_wrap(~tratamiento) +
+      geom_jitter(color="black", size=0.4, alpha=0.9) +
+  # identidad visual del proyecto
+  scale_fill_manual(values = colores_proyecto) +
+  #etiquetas de eje
+  labs(y = "Asignación de  Biomasa",
+       x = "Especie") +
+  #formato de tema
+  theme_pubr(base_size = 11) +
+   theme(
+    strip.background = element_rect(fill = "#F4F5F7", color = NA), 
+    strip.text = element_text(size = 10),
+    panel.grid.major.y = element_line(color = "#E5E5E5", linewidth = 0.3), 
+    legend.position = "none",
+    axis.text.x.bottom = element_text(face = "italic")
+    
+   )
+
+# unión
+fig2 <- box_lf / box_rt
+
+fig2 + plot_annotation(tag_levels = 'A')
+
+
 ```
 
 Los niveles de lesión foliar evaluados en ambas especies mostraron una respuesta inversa ante la presencia de cadmio (Cd) (@fig-3). Bajo condiciones óptimas (control), los individuos presentaron los mayores índices de daño en sus hojas, alcanzando valores promedio alrededor de 11 % para las dos especies. Sin embargo, al ser expuestas a la toxicidad por Cd, el porcentaje de lesión foliar cayó en ambas especies, registrando valores inferiores al 4% en *A. philoxeroides* y cercanos al 6% en *A. sessilis*. Esto sugiere que al mantener las hojas cargadas con estos compuestos defensivos por contrarrestar el estrés que provoca la acumulación del metal, la planta no solo mitiga el daño por el metal, sino que genera una protección colateral contra patógenos oportunistas que suelen atacar a los tejidos debilitados.
 
+Respecto a la asignación de biomasa, el análisis gráfico preliminar sugiere un comportamiento homólogo entre ambas especies, sin variaciones interespecíficas marcadas. No obstante, se observa una tendencia de cambio entre tratamientos; los diagramas de caja revelan que el valor de esta relación aumenta bajo la exposición a cadmio en comparación con el grupo control. Este incremento indica una mayor inversión de biomasa hacia el sistema radicular, lo cual podría constituir un mecanismo fisiológico que busca restringir la translocación del metal hacia los órganos aéreos (tallo y hojas), minimizando así los daños fitotóxicos en los tejidos fotosintéticos[@jpurushothama2024; @gratão2019].
+
+### Análisis Inferencial
+
+Para dar respuesta a la pregunta central se realizaron dos modelos ANOVA - Dos Vías independientes, uno para biomasa y otro para taninos . Se comprobaron los supuestos de normalidad y homocedasticidad con los residuos del anova para tomar cómo válidos los resultados. Cuando la interacción mostró significancia, se procedió con una prueba post-hoc de Tukey (Tukey HSD) para comparar pares específicos. El resumen de este proceso está reportado en la @tbl-tabla2.
+
+```{r}
+#| label: tbl-tabla2
+ 
+
+# Biomasa
+aov_biomasa <- aov(masa_total_g ~ especie * tratamiento, data = datos_eda)
+df_biomasa <- emmeans(aov_biomasa, ~ especie * tratamiento) |> 
+  cld(Letters = letters) |> 
+  as.data.frame() |> 
+  mutate(.group = stringr::str_trim(.group)) |> 
+  mutate(`Biomasa (g)` = paste0(round(emmean, 2), " ± ", round(SE, 2), " ^", .group, "^")) |> 
+  dplyr::select(especie, tratamiento, `Biomasa (g)`)
+
+# Taninos 
+aov_taninos <- aov(`taninos_(mg/g)` ~ especie * tratamiento, data = datos_eda) 
+df_taninos <- emmeans(aov_taninos, ~ especie * tratamiento) |> 
+  cld(Letters = letters) |> 
+  as.data.frame() |> 
+  mutate(.group = stringr::str_trim(.group)) |> 
+  mutate(`Taninos (mg/g)` = paste0(round(emmean, 2), " ± ", round(SE, 2), " ^", .group, "^")) |> 
+  dplyr::select(especie, tratamiento, `Taninos (mg/g)`)
+
+# fusionar en una tabla
+tabla_aov <- left_join(df_biomasa, df_taninos, by = c("especie", "tratamiento")) |> 
+  arrange(desc(tratamiento), especie) |> 
+  gt() |> 
+  tab_header(title = md("**Efecto del cambio sobre la Biomasa y taninos**"),
+             subtitle = md("Tabla de medias con letras de significancia")) |> 
+  opt_align_table_header(align = "left") |> 
+  cols_label(
+    especie = md("Especie"),
+    tratamiento = md("Tratamiento"),
+    `Biomasa (g)`= md("Biomasa (g)"),
+    `Taninos (mg/g)`= md("Taninos (mg/g)")
+  ) |> 
+  tab_footnote(footnote = md("**Nota:** Valores expresados como Media ± Desviación Estándar del modelo. Letras distintas en una misma columna indican diferencias estadísticamente significativas según la prueba HSD de Tukey (α = 0.05). Para taninos, al no haber significancia, todos los grupos comparten la misma letra.")) |>
+ 
+    fmt_markdown(columns = c(`Biomasa (g)`, `Taninos (mg/g)`)) |> 
+  
+  cols_align(align = "left", columns = especie) |> 
+  cols_align(align = "center", columns = c(`Biomasa (g)`, `Taninos (mg/g)`)) |> 
+  
+  tab_style(
+    style = cell_text(style = "italic"),
+    locations = cells_body(columns = especie)
+  ) |> 
+  tab_options(
+    column_labels.font.weight = "bold",
+    table.border.top.color = "black",
+    table.border.bottom.color = "black",
+    column_labels.border.bottom.color = "black"
+  )
+  
+
+tabla_aov
+
+```
+
+Se detectaron diferencias significativas independientes tanto para el factor especie (F = 22.56, p \< 0.001) como el factor tratamiento (F = 194.90, p \< 0.001) . Asimismo, Se encontró diferencia altamente significativa sobre el efecto de interacción entre la especie y el tratamiento con cadmio sobre la producción de biomasa seca total (F = 13.52, p \< 0.001). Este resultado confirma que el efecto inhibitorio del cadmio sobre la biomasa no afecta por igual a ambas especies.
+
+El análisis para la concentración de taninos foliares no mostró un efecto de interacción significativo entre la especie y el tratamiento (F = 1.570, p \> 0.05). De igual forma, no se observaron diferencias estadísticamente significativas para los efectos principales de especie ni de tratamiento.
+
+La prueba de comparaciones post-hoc confirmó que en condiciones de control no existieron diferencias estadísticamente significativas en la biomasa total entre ambas especies (p = 0.872). La exposición a cadmio indujo una disminución significativa de la biomasa en ambas plantas, la magnitud del impacto difirió entre ellas: *Alternanthera sessilis* sufrió una pérdida promedio 1.82g de respecto a su control, mientras que *Alternanthera philoxeroides* registró una reducción de 1.06g. En consecuencia, bajo tratamiento con cadmio, la especie invasora (*A. philoxeroides*) conservó una biomasa promedio significativamente mayor en comparación con la especie nativa (*A. sessilis*) (diferencia = -0.87g, evidenciando un desempeño vegetativo superior bajo estrés por metales pesados (@tbl-tabla2).
+
+
+```{r}
+#| label: fig-3
+#| message: false
+#| warning: false
+#| fig-cap: Análisis de correlación lineal entre la biomasa seca total (g) y la concentración de taninos foliares (mg/g) en *Alternanthera philoxeroides* y *Alternanthera sessilis* bajo condiciones de control y exposición a cadmio (Cd). Se incluye el coeficiente de correlación de Pearson (R) para cada escenario.
+
+#configuración de gráfico
+ggplot(datos_eda, aes(masa_total_g,`taninos_(mg/g)`,
+                      )) +
+         geom_point(size = 2, alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  facet_grid(tratamiento~especie, scales = "free_y") +
+  
+# inclusión de valor R2
+  stat_cor(
+    method = "pearson", 
+    aes(label = after_stat(r.label)),
+    label.x.npc = "left", 
+    label.y.npc = "top",
+    size = 3.5,
+    fontface = "bold",
+    show.legend = FALSE
+  ) + 
+  
+  #etiquetas de eje
+  labs(
+    x = "Biomasa Seca Total (g)",
+    y = "Taninos en hojas (mg/g)"
+  ) + 
+  #  formato del tema
+theme_pubr(base_size = 11) +
+  theme(
+    strip.background = element_rect(fill = "#F4F5F7", color = NA),
+    panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.3),
+    legend.position = "none" 
+  )
+
+```
+
+
+La relación entre la biomasa seca y la concentración de taninos foliares complementa y profundiza los hallazgos del ANOVA. La ausencia de un incremento en los niveles de taninos bajo la exposición a Cd sugiere que estos metabolitos actúan como una defensa de tipo constitutivo y no inducible por este metal, descartando un costo energético adicional por síntesis activa de defensa en respuesta al estrés (@fig-3). En el grupo control, A. sessilis exhibió una correlación positiva moderada (R = 0.66), lo que indica que la acumulación de taninos ocurre de forma proporcional al desarrollo y madurez de la planta. En contraste, A. philoxeroides mantuvo una tendencia débilmente negativa (R = -0.28). Bajo la exposición a Cd, esta relación lineal se disipó en ambas especies (*A. philoxeroides*: R = -0.042; *A. sessilis*: R = 0.13). Este fenómeno es especialmente evidente en la especie nativa, donde el metal reprimió severamente la acumulación de biomasa (desplazando los valores bajo los 2.2g), pero manteniendo inalterada la concentración foliar de taninos, lo que demuestra un claro desacoplamiento entre el crecimiento vegetal y la asignación de defensas quimio-ecológicas ante el estrés por metales pesados.
+
 ------------------------------------------------------------------------
+
+## Discusión
+
+Los resultados obtenidos demuestran una tolerancia diferencial al cadmio (Cd) entre ambas especies. Aunque la exposición al metal redujo el crecimiento en ambos taxones, la especie invasora *(Alternanthera philoxeroides)* mitigó de manera más eficiente esta pérdida, acumulando un `r paste0(round((0.87*100)/1.54, 1), "%")` más de biomasa que la especie nativa *(A. sessilis)* bajo condiciones de estrés. En términos ecológicos, este escenario representa una amenaza para la restauración ambiental y la conservación de la biodiversidad. Dado que en condiciones controladas (suelos no contaminados) no existen diferencias significativas en el desarrollo de ambas plantas, la presencia de Cd actúa como un filtro ambiental restrictivo que otorga una ventaja competitiva asimétrica a la especie invasora, potenciando su capacidad de desplazamiento de la flora nativa en hábitats perturbados.
+
+Respecto a los taninos foliares, los resultados no permitieron rechazar la hipótesis nula, lo que evidencia que la síntesis de estos metabolitos secundarios no es inducida por la toxicidad del metal en ninguna de las dos especies. Asimismo, el análisis de correlación confirmó un desacoplamiento entre el crecimiento vegetal y la concentración foliar de taninos bajo estrés. Esta independencia metabólica sugiere que la producción de taninos no representa un costo energético extraordinario o activo dirigido a la mitigación del estrés por metales pesados, sino que constituye una línea de defensa química de carácter constitutivo que las plantas mantienen estable independientemente de la presión ejercida por el contaminante.
+
+Finalmente, los patrones observados en la asignación de recursos y el daño tisular requieren una validación estadística para evaluar si la exposición al Cd altera la arquitectura de la planta hacia una mayor inversión en biomasa radicular como estrategia de tolerancia. Asimismo, evaluar el porcentaje de área foliar lesionada en función del cadmio acumulado permitirá comprobar si, añadido a la ventaja en biomasa, la especie invasora exhibe una resistencia superior a patógenos. Este enfoque permitirá discutir si la acumulación del metal en las hojas de la invasora opera bajo la hipótesis de "defensa elemental", otorgándole una protección colateral contra presiones bióticas que agudiza la vulnerabilidad de la especie nativa.
 
 ## Conclusiones
 
-La exposición a cadmio indujo cambios considerables en la biomasa, la concentración de taninos y el daño foliar en ambas especies en comparación con el tratamiento control. De forma general, los resultados apuntan a que la especie invasora, *Alternanthera philoxeroides*, tolera y aprovecha mejor los escenarios de estrés por metales pesados en comparación con su contraparte nativa, *Alternanthera sessilis*. Si bien ambas especies priorizan la asignación de recursos hacia la producción de taninos para contrarrestar la toxicidad del cadmio, es la especie invasora la que exhibe un desempeño adaptativo superior y un menor costo en términos de pérdida de biomasa.
+La presencia de cadmio en el suelo actúa como un filtro ambiental asimétrico que rompe la equidad competitiva observada en condiciones controladas. Mientras que la especie nativa *Alternanthera sessilis* experimenta una drástica reducción del 54.2% en su biomasa total, la invasora *Alternanthera philoxeroides* mitiga eficientemente este estrés (perdiendo solo el 30.5%), logrando acumular un 56.5% más de biomasa que la nativa bajo contaminación. Esto le otorga una ventaja crítica para desplazar a la flora local en hábitats perturbados.
 
----------------------------------------------------------------------------------------
+La síntesis de taninos foliares se encuentra metabólicamente desacoplada de la exposición al metal y del crecimiento general de las plantas. Al no registrarse diferencias significativas entre tratamientos ni correlación con la biomasa, se concluye que estos metabolitos no forman parte de una respuesta inducida ni representan un costo energético extraordinario frente al estrés por cadmio, sino que operan como una línea de defensa química constitutiva preexistente.
 
-::: {.callout-note}
-## Sobre los datos
-El dataset que se puede descargar en el link de la pestaña 'Otros enlaces' corresponde a los datos en bruto de la investigación de [@lin2025].
+Los resultados en fase exploratoria sugieren la posibilidad de una mecanismo de defensa al analizar la asignación de biomasa, y la suma de otra ventaja al observar las diferencias en el porcentaje de daño foliar. Ambas necesitan validación estadística.
+
+------------------------------------------------------------------------
+
+# Referencias
+
+::: {#refs}
 :::
+
+------------------------------------------------------------------------
+
+### Anexos {.appendix}
+
+**verificación de supuestos y pruebas post-hoc**
+
+```{r}
+#| label: anexo
+
+# a) Normalidad de los residuales
+shapiro.test(residuals(aov_biomasa))
+
+# b) Homogeneidad de varianzas (Homocedasticidad)
+car::leveneTest(masa_total_g ~ especie * tratamiento, data = datos_eda)
+
+#C) Post-HOC
+tukey_tidy <- broom::tidy(TukeyHSD(aov_biomasa, which = "especie:tratamiento"))
+
+tukey_tidy |> 
+  gt() |> 
+  cols_hide(columns = c(null.value,term)) |> 
+  cols_label(
+    contrast = "Comparación de Grupos",
+    estimate = "Diferencia Media",
+    conf.low = "IC Inferior (95%)",
+    conf.high = "IC Superior (95%)",
+    adj.p.value = "p-ajustado"
+  ) |> 
+  fmt_number(
+    columns = c(estimate, conf.low, conf.high, adj.p.value), 
+    decimals = 8
+  ) |>
+  tab_options(
+    column_labels.font.weight = "bold",
+    table.width = pct(100)
+  ) |>
+  tab_header(title = md("**prueba tukeyHSD**"))
+
+
+```
