@@ -6,7 +6,6 @@ date: "2026-07-21"
 lang: es
 format:
   html:
-    theme: Journal
     toc: true
     toc-depth: 3
     toc-title: "Contenido"
@@ -101,7 +100,7 @@ Se descargaron datos que corresponden a la investigación hecha por [@lin2025] a
 
 ### Análisis exploratorio de datos.
 
-Dados los objetivos del estudio y la naturaleza de las variables, se seleccionaron el promedio y la desviación estándar como estadísticas descriptivas para evaluar la tendencia central y la variabilidad de las réplicas, cuyos resultados se presentan en la @tbl-tabla1. Asimismo, con el fin de explorar los datos y obtener un panorama preliminar, se generó un histograma de la distribución de la biomasa por tratamiento (@fig-1), y se analizaron las diferencias en el daño foliar y la asignación de biomasa a través de la relación raíz/tallo (@fig-2).
+Dados los objetivos del estudio y la naturaleza de las variables, se seleccionaron el promedio y la desviación estándar como estadísticas descriptivas para evaluar la tendencia central y la variabilidad de las réplicas, cuyos resultados se presentan en la @tbl-tabla1. Asimismo, con el fin de explorar los datos y obtener un panorama preliminar, se generó un histograma de la distribución de la biomasa por tratamiento (@fig-1), y se ilustraron las posibles las diferencias en el daño foliar y la asignación de biomasa a través de la relación raíz/tallo (@fig-2).
 
 ```{r}
 #| label: tbl-tabla1
@@ -286,7 +285,7 @@ fig2 + plot_annotation(tag_levels = 'A')
 
 ```
 
-Los niveles de lesión foliar evaluados en ambas especies mostraron una respuesta inversa ante la presencia de cadmio (Cd) (@fig-3). Bajo condiciones óptimas (control), los individuos presentaron los mayores índices de daño en sus hojas, alcanzando valores promedio alrededor de 11 % para las dos especies. Sin embargo, al ser expuestas a la toxicidad por Cd, el porcentaje de lesión foliar cayó en ambas especies, registrando valores inferiores al 4% en *A. philoxeroides* y cercanos al 6% en *A. sessilis*. Esto sugiere que al mantener las hojas cargadas con estos compuestos defensivos por contrarrestar el estrés que provoca la acumulación del metal, la planta no solo mitiga el daño por el metal, sino que genera una protección colateral contra patógenos oportunistas que suelen atacar a los tejidos debilitados.
+Los niveles de lesión foliar provocada por patógenos (infección por el hongo *F. oxysporum *) evaluados en ambas especies mostraron una respuesta inversa ante la presencia de cadmio (Cd) (@fig-3). Bajo condiciones óptimas (control), los individuos presentaron los mayores índices de daño en sus hojas, alcanzando valores promedio alrededor de 11 % para las dos especies. Sin embargo, al ser expuestas a la toxicidad por Cd, el porcentaje de lesión foliar cayó en ambas especies, registrando valores inferiores al 4% en *A. philoxeroides* y cercanos al 6% en *A. sessilis*. Esto sugiere que al mantener las hojas cargadas con estos compuestos defensivos por contrarrestar el estrés que provoca la acumulación del metal, la planta no solo mitiga el daño por el metal, sino que genera una protección colateral contra patógenos oportunistas que suelen atacar a los tejidos debilitados.
 
 Respecto a la asignación de biomasa, el análisis gráfico preliminar sugiere un comportamiento homólogo entre ambas especies, sin variaciones interespecíficas marcadas. No obstante, se observa una tendencia de cambio entre tratamientos; los diagramas de caja revelan que el valor de esta relación aumenta bajo la exposición a cadmio en comparación con el grupo control. Este incremento indica una mayor inversión de biomasa hacia el sistema radicular, lo cual podría constituir un mecanismo fisiológico que busca restringir la translocación del metal hacia los órganos aéreos (tallo y hojas), minimizando así los daños fitotóxicos en los tejidos fotosintéticos[@jpurushothama2024; @gratão2019].
 
